@@ -1,13 +1,5 @@
 ---
 title: "Git y GitHub en RStudio"
-knit: (function(input_file, encoding) {
-  out_dir <- 'docs';
-  rmarkdown::render(input_file,
- encoding=encoding,
- output_file=file.path(dirname(input_file), out_dir, 'index.html'))})
-author: "Luis Enrique Mendoza Ruiz"
-date: "25/8/2019"
-output: html_document
 ---
 
 # Git y GitHub en RStudio
@@ -207,3 +199,46 @@ git branch -D adiciones
 ```
 git log --oneline --graph --all
 ```
+## Agregando funcionalidad a nuestra página
+Agregaremos una página de bienvenida y navegación a nuestro sitio github.io.
+
+1. Creamos una nueva rama llamada _theme_.
+```
+git branch theme
+```
+
+2. Entramos en ella:
+```
+git checkout theme
+```
+
+3. Agregamos un archivo _\_site.yml_ con el siguiente contenido:
+```
+name: "cars"
+output_dir: "docs"
+navbar:
+  title: "Cars"
+  left:
+  - text: "Home"
+   href: index.html
+  - text: "Speed and Distance"
+   href: speed-and-distance.html
+output:
+  html_document:
+ theme: cosmo
+ ```
+ 4. Agrega otro documento RMarkdown llamado _index.rmd_. Será la página de bienvenida.
+ 
+ 5. En el documento original que estuvimos elaborando, nos vamos al inicio y borramos los campos _knit_ y _output_, quedando solamente el _title_ como único obligatorio.
+ 
+ 6. Guardamos los cambios.
+ 
+ 7. Ejecutamos lo siguiente en la terminal de RStudio:
+ ```
+ rmarkdown::render_site()
+ ```
+ 8. Consolidamos los cambios con Git.
+ 
+ 9. Abrimos la _pull request_ y la convergemos.
+ 
+ 10. Verificamos nuestro sitio.
