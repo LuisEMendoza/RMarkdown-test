@@ -20,8 +20,10 @@ Debemos descargar Git desde [Descargas](https://git-scm.com/downloads). Lo insta
 ## Creando una cuenta en GitHub
 Ahora nos dirigimos a [GitHub](https://github.com) y nos creamos una cuenta dando clic en el botón _Sign up_ que se encuentra al lado superior derecho: 
 ![GitHub](images/001-github.png)
+
 Nos pedirán un nombre de usuario, una dirección de correo y la contraseña. Abajo de todo, existe un paso de verificación de cuenta, solo hay que aprobarlo:
 ![GitHub](images/002-github.png)
+
 Ahora toca decirle a Git quiénes somos en GitHub. En RStudio nos vamos a _Tools -> Shell_ y escribimos en la nueva ventana que saldrá, lo siguiente:
 ```
 git config --global user.email "nombre_correo@company.com"
@@ -32,6 +34,7 @@ Listo.
 ## Creando un repositorio
 En la página de GitHub.com, ya autentificados, nos dirigimos al signo '+' que se encuentra al lado superior derecho de la pantalla. Damos clic allí y luego en _New Repository_. 
 ![GitHub](images/007-github.png)
+
 Le ponemos el nombre que deseemos, le damos una descripción adecuada, lo dejamos público, damos _check_ a _Initialize this repository with a README_. Damos clic en el botón _Add .gitignore_ y escribimos _R_. Damos clic en el siguiente botón _Add license_ y seleccionamos _GNU General Public License v3.0_ y presionamos _Create repository_.
 ![GitHub](images/008-github.png)
 
@@ -169,3 +172,14 @@ Aparece una pantalla en la que debemos llenar con datos de la petición. Debemos
 
 ## Converge la pull request en GitHub
 En GitHub nos dirigimos a la pestaña _Pull Requests_ de nuestro repositorio. Bajamos y damos clic en el botón verde _Merge Pull Request_. Confirmamos dando clic en el botón _Confirm merge_ y borramos la rama nueva, si lo deseamos.
+
+## Creando la página del sitio
+Ahora queremos publicar este documento en formato HTML como la página del sitio. Hay que realizar los siguientes pasos:
+
+1. Entrar a la pestaña _Settings_ del repositorio.
+2. Bajar hasta la sección _GitHub Pages_.
+3. En _Source_ dar clic en el botón desplegable que dice _None_ y seleccionar _master branch/docs folder_.
+![pages](images/017-github.png)
+
+4. Aparecerá un mensaje en la misma sección _GitHub Pages_ diciendo que el sitio ha sido publicado en una dirección con dominio _github.io_.
+5. Damos clic en el sitio mostrado para poder acceder a nuestra página.
