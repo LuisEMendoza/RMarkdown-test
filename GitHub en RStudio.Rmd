@@ -1,5 +1,10 @@
 ---
 title: "Git y GitHub en RStudio"
+knit: (function(input_file, encoding) {
+  out_dir <- 'docs';
+  rmarkdown::render(input_file,
+ encoding=encoding,
+ output_file=file.path(dirname(input_file), out_dir, 'index.html'))})
 author: "LEMR"
 date: "23/8/2019"
 output: html_document
@@ -29,13 +34,18 @@ En la página de GitHub.com, ya autentificados, nos dirigimos al signo '+' que s
 ![GitHub](images/007-github.png)
 Le ponemos el nombre que deseemos, le damos una descripción adecuada, lo dejamos público, damos _check_ a _Initialize this repository with a README_. Damos clic en el botón _Add .gitignore_ y escribimos _R_. Damos clic en el siguiente botón _Add license_ y seleccionamos _GNU General Public License v3.0_ y presionamos _Create repository_.
 ![GitHub](images/008-github.png)
+
 ## Clonando el repositorio
+
 1. En nuestra página GitHub, damos clic a nuestro repositorio a clonar.
 ![GitHub](images/009-github.png)
+
 2. En la pestaña _Code_ localizamos el botón verde _Clone or download_.
 ![GitHub](images/010-github.png)
+
 3. Damos clic en el botón _Copy to clipboard_ para copiar la dirección del repositorio.
 ![GitHub](images/011-github.png)
+
 4. Ejecutamos RStudio y damos clic en _File -> New Project -> Version Control -> Git_. Pegamos la dirección copiada en _Repository URL_, presionamos `tab` para asegurarnos de que se ponga el nombre original del repositorio y presionamos _Create project_.
 ![GitHub](images/012-github.png)
 
@@ -48,9 +58,11 @@ Le ponemos el nombre que deseemos, le damos una descripción adecuada, lo dejamo
 ## Consolidar y empujar los cambios a GitHub
 1. Con nuestro archivo guardado, es momento de «consolidar». Para ello, nos dirigimos a la pestaña _Git_ que se encuentra en el panel superior derecho:
 ![commit](images/013-github.png)
+
 2. Presionamos _Commit_.
 3. En la ventana _Review Changes_ seleccionamos todos los archivos mostrados.Todos deberán cambiar su _status_ a una letra A de color verde. Agregamos un mensaje al _commit_ y presionamos el botón _Commit_:
-![commit](images/013-github.png)
+![commit](images/014-github.png)
+
 4. Después de un pequeño lapso, se mostrará una ventana con algunos mensajes. La cerramos con el botón _Close_.
 5. Presionamos _Pull_ en la ventana _Review Changes_ que queda, esto es para «jalar» los cambios hechos en el repositorio de manera remota. Esperamos a que aparezca otra ventana y el mensaje «Ya está actualizado» y la cerramos con _Close_.
 6. Ahora presionamos _Push_ para «empujar» nuestros cambios hechos recientemente al repositorio. Aquí Git nos pedirá el nombre de usuario y la contraseña de la cuenta. Podremos cerrar la ventana cuando aparezca el botón _Close_.
@@ -66,3 +78,42 @@ $ git config --global credential.helper wincred
 ```
 $ git config --global credential.helper cache
 ```
+
+## Creando ramas localmente
+Un concepto intrínseco en GitHub es el uso de ramas, las cuales permiten desarrollar el proyecto principal en instancias separadas. Así, los cambios realizados no se reflejan en él de inmediato, si no que se someten a revisión cuando una de las ramas se considera terminada. Cuando los cambios hechos en una rama se consideran lo adecuados para implementarse en el proyecto principal, se realiza una petición _pull_. Al aprobarse, converge en la rama principal, que se llama _Master_.
+Para crearlas a través de RStudio:
+1. Nos dirigimos al panel inferior izquierdo, damos clic a la pestaña _Terminal_ y escribimos: 
+
+![commit](images/015-github.png)
+
+```
+git branch NombreDeRama
+```
+2. Verificamos el estado del repositorio:
+```
+git status
+```
+Es importante notar que solo creamos la rama, no estamos dentro de ella (aún seguimos en la rama Master).
+3. Para dirigirnos a la rama recién creada, escribimos:
+```
+git checkout NombreDeRama
+```
+4. Volvemos a verificar el estado del repositorio, para que nos indique si ya estamos en la rama nueva:
+```
+git status
+```
+
+## Haciendo cambios locales con Git
+Generemos la salida HTML de nuestro documento RMarkdown en un directorio separado llamado _docs_. Para lograrlo:
+
+1. Creamos un nuevo directorio llamado _docs_ en el panel inferior derecho de RStudio.
+2. Abrimos y agregamos al inicio del documento, justo después del campo _tittle_
+```
+knit: (function(input_file, encoding) {
+  out_dir <- 'docs';
+  rmarkdown::render(input_file,
+ encoding=encoding,
+ output_file=file.path(dirname(input_file), out_dir, 'index.html'))})
+ ```
+2. Guardamos el archivo.
+Damos clic en el botón _Knit_ que se encuentra en el panel donde estamos editando nuestro documento.
