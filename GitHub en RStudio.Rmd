@@ -154,3 +154,18 @@ git log --oneline
 ```
 git diff --stat --summary master..NombreDeRama
 ```
+
+## Abrir una petición pull en GitHub
+Es momento de empujar los cambios:
+1. Empuja los cambios al repositorio remoto:
+```
+git push -u origin NombreDeRama
+```
+
+2. Crea una petición pull en tu sitio de GitHub, para ello, ve al repositorio y verás en la pantalla principal la rama que se acaba de empujar y a su lado, un botón verde con la leyenda _Compare & Pull Request_. Presionamos dicho botón.
+![new request](images/016-github.png)
+
+Aparece una pantalla en la que debemos llenar con datos de la petición. Debemos asegurarnos de que en la parte superior sí esté seleccionada la base como master y compare como el nombre de nuestra rama. Presionamos el botón _Create Pull Request_.
+
+## Converge la pull request en GitHub
+En GitHub nos dirigimos a la pestaña _Pull Requests_ de nuestro repositorio. Bajamos y damos clic en el botón verde _Merge Pull Request_. Confirmamos dando clic en el botón _Confirm merge_ y borramos la rama nueva, si lo deseamos.
