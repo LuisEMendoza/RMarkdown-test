@@ -182,6 +182,7 @@ Ahora queremos publicar este documento en formato HTML como la página del sitio
 ![pages](images/017-github.png)
 
 4. Aparecerá un mensaje en la misma sección _GitHub Pages_ diciendo que el sitio ha sido publicado en una dirección con dominio _github.io_.
+
 5. Damos clic en el sitio mostrado para poder acceder a nuestra página.
 
 ## Actualiza el repositorio local
@@ -206,3 +207,7 @@ git branch -D adiciones
 ```
 git log --oneline --graph --all
 ```
+
+5. Damos clic en el sitio mostrado para poder acceder a nuestra página.
+
+
