@@ -207,7 +207,3 @@ git branch -D adiciones
 ```
 git log --oneline --graph --all
 ```
-
-5. Damos clic en el sitio mostrado para poder acceder a nuestra página.
-
-
