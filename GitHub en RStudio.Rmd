@@ -51,3 +51,6 @@ Le ponemos el nombre que deseemos, le damos una descripción adecuada, lo dejamo
 2. Presionamos _Commit_.
 3. En la ventana _Review Changes_ seleccionamos todos los archivos mostrados.Todos deberán cambiar su _status_ a una letra A de color verde. Agregamos un mensaje al _commit_ y presionamos el botón _Commit_:
 ![commit](images/013-github.png)
+4. Después de un pequeño lapso, se mostrará una ventana con algunos mensajes. La cerramos con el botón _Close_.
+5. Presionamos _Pull_ en la ventana _Review Changes_ que queda, esto es para «jalar» los cambios hechos en el repositorio de manera remota. Esperamos a que aparezca otra ventana y el mensaje «Ya está actualizado» y la cerramos con _Close_.
+6. Ahora presionamos _Push_ para «empujar» nuestros cambios hechos recientemente al repositorio. Aquí Git nos pedirá el nombre de usuario y la contraseña de la cuenta.
