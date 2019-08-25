@@ -1,12 +1,12 @@
   name: "cars"
   output_dir: "docs"
   navbar:
-    title: "Cars"
+    title: "DesArraigo"
     left:
     - text: "Home"
       href: index.html
-    - text: "Speed and Distance"
-      href: speed-and-distance.html
+    - text: "Cómo trabajar con Git en RStudio"
+      href: Github-en-RStudio.html
   output:
     html_document: ~
      
