@@ -108,6 +108,7 @@ Generemos la salida HTML de nuestro documento RMarkdown en un directorio separad
 
 1. Creamos un nuevo directorio llamado _docs_ en el panel inferior derecho de RStudio.
 2. Abrimos y agregamos al inicio del documento, justo después del campo _tittle_
+
 ```
 knit: (function(input_file, encoding) {
   out_dir <- 'docs';
@@ -115,5 +116,41 @@ knit: (function(input_file, encoding) {
  encoding=encoding,
  output_file=file.path(dirname(input_file), out_dir, 'index.html'))})
  ```
-2. Guardamos el archivo.
-Damos clic en el botón _Knit_ que se encuentra en el panel donde estamos editando nuestro documento.
+
+3. Guardamos el archivo.
+
+4. Damos clic en el botón _Knit_ que se encuentra en el panel donde estamos editando nuestro documento. Se generará el archivo HTML. Podremos ahora visualizarlo en su forma final.
+
+## Consolidar cambios locales con Git
+Con el archivo HTML generado, es momento de consolidar los cambios.
+
+1. Determinar el estado del archivo:
+```
+git status
+```
+El archivo deberá encontrarse dentro de los archivos sin seguimiento.
+
+2. Para agregar el archivo al seguimiento, escribe:
+```
+git add . 
+```
+
+3. Verifica el estado. El archivo ahora debe estar dentro de los cambios a ser confirmados:
+```
+git status
+```
+
+4. Consolida el archivo. No olvides incluir un comentario de consolidación adecuado:
+```
+git commit -m "Salida HTML a un directorio de documentos"
+```
+
+5. Para poder ver una historia de consolidaciones, puedes escribir:
+```
+git log --oneline
+```
+
+6. Para poder ver los cambios entre la rama master y la rama nueva:
+```
+git diff --stat --summary master..NombreDeRama
+```
