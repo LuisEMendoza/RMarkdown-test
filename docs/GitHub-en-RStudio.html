@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Git y GitHub en RStudio</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Cars</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="speed-and-distance.html">Speed and Distance</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Git y GitHub en RStudio</h1>
+
+</div>
+
+
+<div id="git-y-github-en-rstudio" class="section level1">
+<h1>Git y GitHub en RStudio</h1>
+<p>El uso del control de versiones es obligatorio cuando se trabaja de manera colectiva y se quiere controlar el flujo de trabajo y el seguimiento de los cambios en el mismo. Incluso, para trabajar de manera individual, es deseable mantener vigilados los cambios realizados a un documento importante. RStudio trabaja bastante bien con Git (recordando que utilizaremos Github para hospedar nuestros archivos). Así que comencemos.</p>
+<div id="requisitos" class="section level2">
+<h2>Requisitos</h2>
+<p>Debemos descargar Git desde <a href="https://git-scm.com/downloads">Descargas</a>. Lo instalamos. Ahora bajamos e instalamos RStudio desde <a href="https://www.rstudio.com/products/rstudio/download/">Descargas</a>, cuidando que sea obviamente la versión deseada. Lo ejecutamos enseguida.</p>
+</div>
+<div id="creando-una-cuenta-en-github" class="section level2">
+<h2>Creando una cuenta en GitHub</h2>
+<p>Ahora nos dirigimos a <a href="https://github.com">GitHub</a> y nos creamos una cuenta dando clic en el botón <em>Sign up</em> que se encuentra al lado superior derecho: <img src="images/001-github.png" alt="GitHub" /></p>
+<p>Nos pedirán un nombre de usuario, una dirección de correo y la contraseña. Abajo de todo, existe un paso de verificación de cuenta, solo hay que aprobarlo: <img src="images/002-github.png" alt="GitHub" /></p>
+<p>Ahora toca decirle a Git quiénes somos en GitHub. En RStudio nos vamos a <em>Tools -&gt; Shell</em> y escribimos en la nueva ventana que saldrá, lo siguiente:</p>
+<pre><code>git config --global user.email &quot;nombre_correo@company.com&quot;
+git config --global user.name &quot;TuNombreEnGithub&quot;</code></pre>
+<p>Listo.</p>
+</div>
+<div id="creando-un-repositorio" class="section level2">
+<h2>Creando un repositorio</h2>
+<p>En la página de GitHub.com, ya autentificados, nos dirigimos al signo ‘+’ que se encuentra al lado superior derecho de la pantalla. Damos clic allí y luego en <em>New Repository</em>. <img src="images/007-github.png" alt="GitHub" /></p>
+<p>Le ponemos el nombre que deseemos, le damos una descripción adecuada, lo dejamos público, damos <em>check</em> a <em>Initialize this repository with a README</em>. Damos clic en el botón <em>Add .gitignore</em> y escribimos <em>R</em>. Damos clic en el siguiente botón <em>Add license</em> y seleccionamos <em>GNU General Public License v3.0</em> y presionamos <em>Create repository</em>. <img src="images/008-github.png" alt="GitHub" /></p>
+</div>
+<div id="clonando-el-repositorio" class="section level2">
+<h2>Clonando el repositorio</h2>
+<ol style="list-style-type: decimal">
+<li><p>En nuestra página GitHub, damos clic a nuestro repositorio a clonar. <img src="images/009-github.png" alt="GitHub" /></p></li>
+<li><p>En la pestaña <em>Code</em> localizamos el botón verde <em>Clone or download</em>. <img src="images/010-github.png" alt="GitHub" /></p></li>
+<li><p>Damos clic en el botón <em>Copy to clipboard</em> para copiar la dirección del repositorio. <img src="images/011-github.png" alt="GitHub" /></p></li>
+<li><p>Ejecutamos RStudio y damos clic en <em>File -&gt; New Project -&gt; Version Control -&gt; Git</em>. Pegamos la dirección copiada en <em>Repository URL</em>, presionamos <code>tab</code> para asegurarnos de que se ponga el nombre original del repositorio y presionamos <em>Create project</em>. <img src="images/012-github.png" alt="GitHub" /></p></li>
+</ol>
+</div>
+<div id="creando-el-primer-documento-rmarkdown" class="section level2">
+<h2>Creando el primer documento RMarkdown</h2>
+<ol style="list-style-type: decimal">
+<li>Con el proyecto creado y sin haber salido de RStudio, damos clic en <em>File -&gt; New File -&gt; RMarkdown</em>.</li>
+<li>Elegimos <em>HTML</em> como salida por defecto.</li>
+<li>Guardamos el archivo en <em>File -&gt; Save</em>.</li>
+<li>Ponemos un nombre adecuado (por ejemplo, <em>test</em>) y guardamos.</li>
+</ol>
+</div>
+<div id="consolidar-y-empujar-los-cambios-a-github" class="section level2">
+<h2>Consolidar y empujar los cambios a GitHub</h2>
+<ol style="list-style-type: decimal">
+<li><p>Con nuestro archivo guardado, es momento de «consolidar». Para ello, nos dirigimos a la pestaña <em>Git</em> que se encuentra en el panel superior derecho: <img src="images/013-github.png" alt="commit" /></p></li>
+<li><p>Presionamos <em>Commit</em>.</p></li>
+<li><p>En la ventana <em>Review Changes</em> seleccionamos todos los archivos mostrados.Todos deberán cambiar su <em>status</em> a una letra A de color verde. Agregamos un mensaje al <em>commit</em> y presionamos el botón <em>Commit</em>: <img src="images/014-github.png" alt="commit" /></p></li>
+<li><p>Después de un pequeño lapso, se mostrará una ventana con algunos mensajes. La cerramos con el botón <em>Close</em>.</p></li>
+<li><p>Presionamos <em>Pull</em> en la ventana <em>Review Changes</em> que queda, esto es para «jalar» los cambios hechos en el repositorio de manera remota. Esperamos a que aparezca otra ventana y el mensaje «Ya está actualizado» y la cerramos con <em>Close</em>.</p></li>
+<li><p>Ahora presionamos <em>Push</em> para «empujar» nuestros cambios hechos recientemente al repositorio. Aquí Git nos pedirá el nombre de usuario y la contraseña de la cuenta. Podremos cerrar la ventana cuando aparezca el botón <em>Close</em>.</p></li>
+<li><p>Ahora hay que dirigirnos a nuestro repositorio GitHub para verificar los cambios realizados.</p></li>
+</ol>
+</div>
+<div id="guardar-en-cache-nuestras-credenciales-de-github" class="section level2">
+<h2>Guardar en caché nuestras credenciales de GitHub</h2>
+<p>Cada vez que empujemos nuestros cambios a GitHub, éste nos pedirá nuestro nombre de usuario y contraseña. Si no queremos escribirlas cada vez, podemos almacenarlas de manera temporal en la caché. 1. Para Windows, se instala <em>Git for Windows</em> desde <a href="https://gitforwindows.org/"></a> y se escribe en esa aplicación lo siguiente:</p>
+<pre><code>$ git config --global credential.helper wincred</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>Para Linux, en la terminal se ejecuta lo siguiente:</li>
+</ol>
+<pre><code>$ git config --global credential.helper cache</code></pre>
+</div>
+<div id="creando-ramas-localmente" class="section level2">
+<h2>Creando ramas localmente</h2>
+<p>Un concepto intrínseco en GitHub es el uso de ramas, las cuales permiten desarrollar el proyecto principal en instancias separadas. Así, los cambios realizados no se reflejan en él de inmediato, si no que se someten a revisión cuando una de las ramas se considera terminada. Cuando los cambios hechos en una rama se consideran lo adecuados para implementarse en el proyecto principal, se realiza una petición <em>pull</em>. Al aprobarse, converge en la rama principal, que se llama <em>Master</em>. Para crearlas a través de RStudio: 1. Nos dirigimos al panel inferior izquierdo, damos clic a la pestaña <em>Terminal</em> y escribimos:</p>
+<div class="figure">
+<img src="images/015-github.png" alt="" />
+<p class="caption">commit</p>
+</div>
+<pre><code>git branch NombreDeRama</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>Verificamos el estado del repositorio:</li>
+</ol>
+<pre><code>git status</code></pre>
+<p>Es importante notar que solo creamos la rama, no estamos dentro de ella (aún seguimos en la rama Master). 3. Para dirigirnos a la rama recién creada, escribimos:</p>
+<pre><code>git checkout NombreDeRama</code></pre>
+<ol start="4" style="list-style-type: decimal">
+<li>Volvemos a verificar el estado del repositorio, para que nos indique si ya estamos en la rama nueva:</li>
+</ol>
+<pre><code>git status</code></pre>
+</div>
+<div id="haciendo-cambios-locales-con-git" class="section level2">
+<h2>Haciendo cambios locales con Git</h2>
+<p>Generemos la salida HTML de nuestro documento RMarkdown en un directorio separado llamado <em>docs</em>. Para lograrlo:</p>
+<ol style="list-style-type: decimal">
+<li>Creamos un nuevo directorio llamado <em>docs</em> en el panel inferior derecho de RStudio.</li>
+<li>Abrimos y agregamos al inicio del documento, justo después del campo <em>tittle</em></li>
+</ol>
+<pre><code>knit: (function(input_file, encoding) {
+  out_dir &lt;- &#39;docs&#39;;
+  rmarkdown::render(input_file,
+ encoding=encoding,
+ output_file=file.path(dirname(input_file), out_dir, &#39;index.html&#39;))})</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li><p>Guardamos el archivo.</p></li>
+<li><p>Damos clic en el botón <em>Knit</em> que se encuentra en el panel donde estamos editando nuestro documento. Se generará el archivo HTML. Podremos ahora visualizarlo en su forma final.</p></li>
+</ol>
+</div>
+<div id="consolidar-cambios-locales-con-git" class="section level2">
+<h2>Consolidar cambios locales con Git</h2>
+<p>Con el archivo HTML generado, es momento de consolidar los cambios.</p>
+<ol style="list-style-type: decimal">
+<li>Determinar el estado del archivo:</li>
+</ol>
+<pre><code>git status</code></pre>
+<p>El archivo deberá encontrarse dentro de los archivos sin seguimiento.</p>
+<ol start="2" style="list-style-type: decimal">
+<li>Para agregar el archivo al seguimiento, escribe:</li>
+</ol>
+<pre><code>git add . </code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li>Verifica el estado. El archivo ahora debe estar dentro de los cambios a ser confirmados:</li>
+</ol>
+<pre><code>git status</code></pre>
+<ol start="4" style="list-style-type: decimal">
+<li>Consolida el archivo. No olvides incluir un comentario de consolidación adecuado:</li>
+</ol>
+<pre><code>git commit -m &quot;Salida HTML a un directorio de documentos&quot;</code></pre>
+<ol start="5" style="list-style-type: decimal">
+<li>Para poder ver una historia de consolidaciones, puedes escribir:</li>
+</ol>
+<pre><code>git log --oneline</code></pre>
+<ol start="6" style="list-style-type: decimal">
+<li>Para poder ver los cambios entre la rama master y la rama nueva:</li>
+</ol>
+<pre><code>git diff --stat --summary master..NombreDeRama</code></pre>
+</div>
+<div id="abrir-una-peticion-pull-en-github" class="section level2">
+<h2>Abrir una petición pull en GitHub</h2>
+<p>Es momento de empujar los cambios: 1. Empuja los cambios al repositorio remoto:</p>
+<pre><code>git push -u origin NombreDeRama</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>Crea una petición pull en tu sitio de GitHub, para ello, ve al repositorio y verás en la pantalla principal la rama que se acaba de empujar y a su lado, un botón verde con la leyenda <em>Compare &amp; Pull Request</em>. Presionamos dicho botón. <img src="images/016-github.png" alt="new request" /></li>
+</ol>
+<p>Aparece una pantalla en la que debemos llenar con datos de la petición. Debemos asegurarnos de que en la parte superior sí esté seleccionada la base como master y compare como el nombre de nuestra rama. Presionamos el botón <em>Create Pull Request</em>.</p>
+</div>
+<div id="converge-la-pull-request-en-github" class="section level2">
+<h2>Converge la pull request en GitHub</h2>
+<p>En GitHub nos dirigimos a la pestaña <em>Pull Requests</em> de nuestro repositorio. Bajamos y damos clic en el botón verde <em>Merge Pull Request</em>. Confirmamos dando clic en el botón <em>Confirm merge</em> y borramos la rama nueva, si lo deseamos.</p>
+</div>
+<div id="creando-la-pagina-del-sitio" class="section level2">
+<h2>Creando la página del sitio</h2>
+<p>Ahora queremos publicar este documento en formato HTML como la página del sitio. Hay que realizar los siguientes pasos:</p>
+<ol style="list-style-type: decimal">
+<li><p>Entrar a la pestaña <em>Settings</em> del repositorio.</p></li>
+<li><p>Bajar hasta la sección <em>GitHub Pages</em>.</p></li>
+<li><p>En <em>Source</em> dar clic en el botón desplegable que dice <em>None</em> y seleccionar <em>master branch/docs folder</em>. <img src="images/017-github.png" alt="pages" /></p></li>
+<li><p>Aparecerá un mensaje en la misma sección <em>GitHub Pages</em> diciendo que el sitio ha sido publicado en una dirección con dominio <em>github.io</em>.</p></li>
+<li><p>Damos clic en el sitio mostrado para poder acceder a nuestra página.</p></li>
+</ol>
+</div>
+<div id="actualiza-el-repositorio-local" class="section level2">
+<h2>Actualiza el repositorio local</h2>
+<p>Después de haber unido las ramas del proyecto, toca actualizar el repositorio local, es decir, la computadora en la que se está trabajando.</p>
+<ol style="list-style-type: decimal">
+<li>En la terminal de RStudio, escribir</li>
+</ol>
+<pre><code>git checkout master</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>Enseguida escribir</li>
+</ol>
+<pre><code>git pull</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li>Borramos la rama local:</li>
+</ol>
+<pre><code>git branch -D adiciones</code></pre>
+<ol start="4" style="list-style-type: decimal">
+<li>Podemos ver la historia de nuestras modificaciones mediante</li>
+</ol>
+<pre><code>git log --oneline --graph --all</code></pre>
+</div>
+<div id="agregando-funcionalidad-a-nuestra-pagina" class="section level2">
+<h2>Agregando funcionalidad a nuestra página</h2>
+<p>Agregaremos una página de bienvenida y navegación a nuestro sitio github.io.</p>
+<ol style="list-style-type: decimal">
+<li>Creamos una nueva rama llamada <em>theme</em>.</li>
+</ol>
+<pre><code>git branch theme</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>Entramos en ella:</li>
+</ol>
+<pre><code>git checkout theme</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li>Agregamos un archivo <em>_site.yml</em> con el siguiente contenido:</li>
+</ol>
+<pre><code>name: &quot;cars&quot;
+output_dir: &quot;docs&quot;
+navbar:
+  title: &quot;Cars&quot;
+  left:
+  - text: &quot;Home&quot;
+   href: index.html
+  - text: &quot;Speed and Distance&quot;
+   href: speed-and-distance.html
+output:
+  html_document:
+ theme: cosmo</code></pre>
+<ol start="4" style="list-style-type: decimal">
+<li><p>Agrega otro documento RMarkdown llamado <em>index.rmd</em>. Será la página de bienvenida.</p></li>
+<li><p>En el documento original que estuvimos elaborando, nos vamos al inicio y borramos los campos <em>knit</em> y <em>output</em>, quedando solamente el <em>title</em> como único obligatorio.</p></li>
+<li><p>Guardamos los cambios.</p></li>
+<li><p>Ejecutamos lo siguiente en la terminal de RStudio:</p></li>
+</ol>
+<pre><code>rmarkdown::render_site()</code></pre>
+<ol start="8" style="list-style-type: decimal">
+<li><p>Consolidamos los cambios con Git.</p></li>
+<li><p>Abrimos la <em>pull request</em> y la convergemos.</p></li>
+<li><p>Verificamos nuestro sitio.</p></li>
+</ol>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
