@@ -321,9 +321,7 @@ A las características podemos dividirlas en dos: <strong>categóricas</strong> 
 </div>
 <div id="estadistica-descriptiva-en-accion" class="section level2">
 <h2>Estadística Descriptiva en acción</h2>
-<p>La tragedia que sufrió el transbordador espacial Challenger y sus astronautas en 1986 condujo a varios estudios para investigar las razones de la falla de la misión. La atención se enfocó de inmediato en el comportamiento de los sellos anulares del motor del cohete. He aquí datos derivados de observaciones en x = temperatura del sello anular (°F) en cada encendido de prueba o lanzamiento del motor del cohete del transbordador (Presidential Commission on the Space Shuttle Challenger Accident, Vol. 1, 1986: 129-131).</p>
-<pre class="r"><code>temp &lt;- read.table(&quot;datasets/001-challenger.txt&quot;, header = FALSE)
-knitr::kable(temp[1:36, ], caption = &#39;Temperaturas (°F)&#39;)</code></pre>
+<p>La tragedia que sufrió el transbordador espacial Challenger y sus astronautas en 1986 condujo a varios estudios para investigar las razones de la falla de la misión. La atención se enfocó de inmediato en el comportamiento de los sellos anulares del motor del cohete. He aquí datos derivados de observaciones en x = temperatura del sello anular (°F) en cada encendido de prueba o lanzamiento del motor del cohete del transbordador (Presidential Commission on the Space Shuttle Challenger Accident, Vol. 1, 1986: 129-131). Los datos se presentan en una sola columna para dejar en claro que se refieren a datos univariables. Cabe mencionar que los datos se encuentran en la carpeta <em>datasets</em> del repositorio de la asignatura en <em>GitHub</em>: <a href="https://github.com/LuisEMendoza/RMarkdown-test/tree/master/datasets"></a>.</p>
 <table>
 <caption>Temperaturas (°F)</caption>
 <thead>
@@ -442,25 +440,107 @@ knitr::kable(temp[1:36, ], caption = &#39;Temperaturas (°F)&#39;)</code></pre>
 </tr>
 </tbody>
 </table>
+<p>A simple vista, los datos así mostrados no dicen gran cosa. Para ello es deseable organizarlos de manera que muestren algún comportamiento en particular. Una de las maneras más burdas es el <strong>diagrama de tallo y hojas</strong>, el cual se muestra a continuación:</p>
+<pre><code>## 
+##   The decimal point is 1 digit(s) to the right of the |
+## 
+##   3 | 1
+##   4 | 059
+##   5 | 23788
+##   6 | 01136777789
+##   7 | 000023556689
+##   8 | 0134</code></pre>
+<p>La explicación del diagrama es sencilla: las cifras que representan las decenas se colocan como tallos, mientras que las cifras que son unidades se vuelven hojas. Este diagrama nos permite saber de manera rápida cuáles son las temperaturas más comunes o frecuentes en nuestro conjunto de datos. También puede decirse que es un <strong>histograma</strong> muy rudimentario.</p>
+<p>A continuación se muestra un histograma:</p>
+<p><img src="Descriptiva_files/figure-html/unnamed-chunk-99-1.png" width="672" /></p>
+<p>Y para terminar, una gráfica que posteriormente se verá cómo interpretarse y construirse es la <strong>gráfica de caja</strong>, la cual se muestra a continuación:</p>
+<pre class="r"><code>boxplot(temp[1:36,])</code></pre>
+<p><img src="Descriptiva_files/figure-html/unnamed-chunk-100-1.png" width="672" /></p>
+<p>Lo anterior, así como la tabla donde se muestran los datos, fue realizado con un <em>software</em> estadístico: <strong>R</strong>.</p>
 </div>
-<div id="r-markdown" class="section level2">
-<h2>R Markdown</h2>
-<p>This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <a href="http://rmarkdown.rstudio.com" class="uri">http://rmarkdown.rstudio.com</a>.</p>
-<p>When you click the <strong>Knit</strong> button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:</p>
-<pre class="r"><code>summary(cars)</code></pre>
-<pre><code>##      speed           dist       
-##  Min.   : 4.0   Min.   :  2.00  
-##  1st Qu.:12.0   1st Qu.: 26.00  
-##  Median :15.0   Median : 36.00  
-##  Mean   :15.4   Mean   : 42.98  
-##  3rd Qu.:19.0   3rd Qu.: 56.00  
-##  Max.   :25.0   Max.   :120.00</code></pre>
+<div id="representaciones-graficas-y-tabulares" class="section level2">
+<h2>Representaciones gráficas y tabulares</h2>
+<p>Es importante mencionar que existe una notación que debemos considerar: el número de observaciones presentes en un conjunto de datos dado, se denotará por la letra <em>n</em>. También, cada observación se denotará por la letra <em>x</em> acompañada de un subíndice que no tiene ninguna función más que identificar los datos. Es decir, representar una observación como <span class="math inline">\(x_1\)</span> no implica que esta sea la más pequeña. Con esto en mente, pasamos a revisar las representaciones gráficas de los datos.</p>
+<div id="diagrama-de-tallo-y-hojas" class="section level3">
+<h3>Diagrama de tallo y hojas</h3>
+<p>Anteriormente se habló un poco de este diagrama. Es bastante sencillo y puede aplicarse a números decimales. Veamos los pasos para producirlos:</p>
+<ol style="list-style-type: decimal">
+<li>Se selecciona uno o más de los primeros dígitos para el tallo. Los dígitos restantes serán las hojas.</li>
+<li>Los valores del tallo se escriben de manera vertical.</li>
+<li>Se anota una hoja por cada observación a la derecha del tallo.</li>
+<li>Se indican las unidades para tallos y hojas en algún lugar de la gráfica.</li>
+</ol>
+<p>Una gráfica de tallos y hojas da información sobre los siguientes aspectos de los datos: * Identificación de un valor típico o representativo. * Grado de dispersión en torno al valor típico. * Presencia de brechas en los datos. * Grado de simetría en la distribución de los valores. * Número y localización de crestas. * Presencia de valores afuera de la gráfica.</p>
+<p>A modo de práctica, tomemos los siguientes valores que representan el flujo de agua en regaderas de Australia en litros por minuto, para <em>n = 130</em>. Se muestra también el código en <em>R</em> para mostrar y calcular el diagrama:</p>
+<pre class="r"><code>flujo &lt;- read.table(&quot;datasets/002-flujo.txt&quot;, header = FALSE)
+head(flujo)</code></pre>
+<pre><code>##     V1
+## 1  4.6
+## 2 12.3
+## 3  7.1
+## 4  7.0
+## 5  4.0
+## 6  9.2</code></pre>
+<p>Construyamos nuestro diagrama:</p>
+<pre class="r"><code>stem(flujo[1:130,])</code></pre>
+<pre><code>## 
+##   The decimal point is at the |
+## 
+##    2 | 23
+##    3 | 2344567789
+##    4 | 01356889
+##    5 | 00001114455666789
+##    6 | 0000122223344456667789999
+##    7 | 00012233455555668
+##    8 | 022333448
+##    9 | 012233335666788
+##   10 | 2344455688
+##   11 | 2335999
+##   12 | 37
+##   13 | 8
+##   14 | 36
+##   15 | 0035
+##   16 | 
+##   17 | 
+##   18 | 9</code></pre>
+<ul>
+<li>¿Cuál es una velocidad de flujo o gasto típico o representativo?</li>
+<li>¿Parece estar la gráfica altamente concentrada o dispersa?</li>
+<li>¿Es la distribución de valores razonablemente simétrica? Si no, ¿cómo describiría el alejamiento de la simetría?</li>
+<li>¿Describiría cualquier observación como alejada del resto de los datos (un valor extremo)?</li>
+</ul>
 </div>
-<div id="including-plots" class="section level2">
-<h2>Including Plots</h2>
-<p>You can also embed plots, for example:</p>
-<p><img src="Descriptiva_files/figure-html/pressure-1.png" width="672" /></p>
-<p>Note that the <code>echo = FALSE</code> parameter was added to the code chunk to prevent printing of the R code that generated the plot.</p>
+<div id="diagrama-de-puntos" class="section level3">
+<h3>Diagrama de puntos</h3>
+<p>Es un resumen atractivo de datos numéricos cuando el conjunto es razonablemente pequeño o existen pocos valores de datos distintos. Cada observación está representada por un punto sobre la ubicación correspondiente en una escala de medición horizontal. Cuando un valor ocurre más de una vez, existe un punto por cada ocurrencia y estos puntos se apilan verticalmente. Como con la gráfica de tallos y hojas, una gráfica de puntos da información sobre la localización, dispersión, extremos y brechas. Usemos como ejemplo el conjunto de las temperaturas del <em>Challenger</em>.</p>
+<pre class="r"><code>stripchart(temp[1:36,], method = &#39;stack&#39;)</code></pre>
+<p><img src="Descriptiva_files/figure-html/unnamed-chunk-103-1.png" width="672" /></p>
+</div>
+<div id="tablas-de-frecuencia" class="section level3">
+<h3>Tablas de frecuencia</h3>
+<p>Vamos a trabajar ahora con datos categóricos. Cuando hablamos de categorías, hablamos de variables nominales, es decir, nombres o etiquetas. Por lo tanto, el tratamiento que debemos darles difiere de los números. Por principio de cuentas, debemos tabularlos. Esto se consigue con una tabla de frecuencias. Primero leemos el archivo con los datos:</p>
+<pre class="r"><code>marca &lt;- c(read.table(&quot;datasets/003-marca.txt&quot;))
+marca</code></pre>
+<pre><code>## $V1
+##  [1] Apple    Apple    Samsung  HTC      Apple    Xiaomi   Nokia   
+##  [8] Samsung  Motorola Samsung  Samsung  Apple    Apple    Huawei  
+## [15] Motorola Samsung  Samsung  Apple    Motorola Nokia    Huawei  
+## [22] Huawei   Motorola Samsung  Samsung  Apple    Samsung  LG      
+## [29] Apple    Samsung  Motorola Huawei  
+## Levels: Apple HTC Huawei LG Motorola Nokia Samsung Xiaomi</code></pre>
+<p>Enseguida creamos la tabla:</p>
+<pre class="r"><code>mar &lt;- table(marca)
+mar</code></pre>
+<pre><code>## marca
+##    Apple      HTC   Huawei       LG Motorola    Nokia  Samsung   Xiaomi 
+##        8        1        4        1        5        2       10        1</code></pre>
+<pre class="r"><code>marca = as.data.frame(mar)
+pie(mar)</code></pre>
+<p><img src="Descriptiva_files/figure-html/unnamed-chunk-106-1.png" width="672" /></p>
+</div>
+<div id="distribuciones-de-frecuencia" class="section level3">
+<h3>Distribuciones de frecuencia</h3>
+</div>
 </div>
 
 
