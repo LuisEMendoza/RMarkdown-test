@@ -6,6 +6,7 @@
       href: index.html
     - text: "Git y GitHub en RStudio"
       href: GitHub-en-RStudio.html
+    - text: "Asignaturas" 
       menu:
         - text: "Probabilidad y Estadística"
         - text: "Unidad 1"
