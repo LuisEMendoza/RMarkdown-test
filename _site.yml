@@ -15,7 +15,7 @@
           href: Probabilidad.html
         - text: "Optimización I"
         - text: "Unidad 1"
-          href: Introducción.html
+          href: IntroPL.html
         - text: "Unidad 2"
           href: Modelos.html
   output:
