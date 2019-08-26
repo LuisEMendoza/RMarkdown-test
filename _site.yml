@@ -1,11 +1,10 @@
   name: "lemr"
   output_dir: "docs"
   navbar:
-    title: "DesArraigo"
     left:
     - text: "Home"
       href: index.html
-    - text: "Cómo trabajar con Git y GitHub en RStudio"
+    - text: "Git y GitHub en RStudio"
       href: GitHub-en-RStudio.html
   output:
     html_document:
