@@ -8,5 +8,7 @@
     - text: "Cómo trabajar con Git en RStudio"
       href: GitHub-en-RStudio.html
   output:
-    html_document: ~
+    html_document:
+        theme: cosmo
+        highlight: tango
     
