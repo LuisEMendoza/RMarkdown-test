@@ -12,7 +12,7 @@ A las características podemos dividirlas en dos: __categóricas__ y __numérica
 Dividiremos la Estadística en dos ramas por el momento. En primera instancia, es necesario recopilar, organizar, resumir y presentar los datos; de esto se encarga la __Estadística Descriptiva__. Por otro lado, se desea extender las propiedades de la muestra hacia la población, mediante inferencias que permitan comprender mejor su comportamiento e incluso pronosticarlo; esa es la función de la __Estadística Inferencial__.
 
 ## Estadística Descriptiva en acción
-La tragedia que sufrió el transbordador espacial Challenger y sus astronautas en 1986 condujo a varios estudios para investigar las razones de la falla de la misión. La atención se enfocó de inmediato en el comportamiento de los sellos anulares del motor del cohete. He aquí datos derivados de observaciones en x = temperatura del sello anular (°F) en cada encendido de prueba o lanzamiento del motor del cohete del transbordador (Presidential Commission on the Space Shuttle Challenger Accident, Vol. 1, 1986: 129-131). Los datos se presentan en una sola columna para dejar en claro que se refieren a datos univariables. Cabe mencionar que los datos se encuentran en la carpeta _datasets_ del repositorio de la asignatura en _GitHub_: [](https://github.com/LuisEMendoza/RMarkdown-test/tree/master/datasets).
+La tragedia que sufrió el transbordador espacial Challenger y sus astronautas en 1986 condujo a varios estudios para investigar las razones de la falla de la misión. La atención se enfocó de inmediato en el comportamiento de los sellos anulares del motor del cohete. He aquí datos derivados de observaciones en x = temperatura del sello anular (°F) en cada encendido de prueba o lanzamiento del motor del cohete del transbordador (Presidential Commission on the Space Shuttle Challenger Accident, Vol. 1, 1986: 129-131). Los datos se presentan en una sola columna para dejar en claro que se refieren a datos univariables. Cabe mencionar que los datos se encuentran en la carpeta _datasets_ del repositorio de la asignatura en [GitHub](https://github.com/LuisEMendoza/RMarkdown-test/tree/master/datasets).
 
 ```{r echo=FALSE}
 temp <- read.table("datasets/001-challenger.txt", header = TRUE)
@@ -107,3 +107,33 @@ pie(mar)
 ```
 
 ### Distribuciones de frecuencia
+En ocasiones es necesario trabajar con valores que no se repiten tanto, como en el caso que se presenta enseguida.
+
+Las compañías eléctricas requieren información sobre el consumo de los clientes para obtener pronósticos precisos de demandas. Investigadores de Wisconsin Power and Light determinaron el consumo de energía (BTU) durante un periodo particular con una muestra de 90 hogares calentados con gas. Se calculó un valor de consumo promedio como sigue:
+
+```{r}
+consumo <- scan("datasets/004-horno.txt")
+consumo
+```
+
+Podríamos graficar el histograma directamente, pero queremos obtener la distribución de frecuencias también. Para ello, ejecutamos la función `hist` pero con la opción de no mostrarlo.
+
+```{r}
+df <- hist(consumo, breaks = 'Sturges', plot = FALSE)
+df
+```
+
+```{r}
+intervalos <- df$breaks
+frecuencias <- cut(consumo, breaks = intervalos, dig.lab = 2, right = FALSE)
+tabla.frec <- table(frecuencias)
+as.data.frame(tabla.frec)
+```
+
+El histograma quedaría así:
+
+```{r}
+hist(consumo)
+```
+
+
