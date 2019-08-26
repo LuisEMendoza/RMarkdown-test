@@ -12,7 +12,7 @@
         - text: "Unidad 1"
           href: Estadistica-descriptiva.html
         - text: "Unidad 2"
-          href: Probabilidad.html
+          href: Descriptiva.html
   output:
     html_document:
         theme: cosmo
