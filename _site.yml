@@ -5,7 +5,7 @@
     left:
     - text: "Home"
       href: index.html
-    - text: "Cómo trabajar con Git en RStudio"
+    - text: "Cómo trabajar con Git y GitHub en RStudio"
       href: GitHub-en-RStudio.html
   output:
     html_document:
