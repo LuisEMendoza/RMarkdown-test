@@ -12,34 +12,99 @@ A las características podemos dividirlas en dos: __categóricas__ y __numérica
 Dividiremos la Estadística en dos ramas por el momento. En primera instancia, es necesario recopilar, organizar, resumir y presentar los datos; de esto se encarga la __Estadística Descriptiva__. Por otro lado, se desea extender las propiedades de la muestra hacia la población, mediante inferencias que permitan comprender mejor su comportamiento e incluso pronosticarlo; esa es la función de la __Estadística Inferencial__.
 
 ## Estadística Descriptiva en acción
-La tragedia que sufrió el transbordador espacial Challenger y sus astronautas en 1986 condujo a varios estudios para investigar las razones de la falla de la misión. La atención se enfocó de inmediato en el comportamiento de los sellos anulares del motor del cohete. He aquí datos derivados de observaciones en x = temperatura del sello anular (°F) en cada encendido de prueba o lanzamiento del motor del cohete del transbordador (Presidential Commission on the Space Shuttle Challenger Accident, Vol. 1, 1986: 129-131).
+La tragedia que sufrió el transbordador espacial Challenger y sus astronautas en 1986 condujo a varios estudios para investigar las razones de la falla de la misión. La atención se enfocó de inmediato en el comportamiento de los sellos anulares del motor del cohete. He aquí datos derivados de observaciones en x = temperatura del sello anular (°F) en cada encendido de prueba o lanzamiento del motor del cohete del transbordador (Presidential Commission on the Space Shuttle Challenger Accident, Vol. 1, 1986: 129-131). Los datos se presentan en una sola columna para dejar en claro que se refieren a datos univariables. Cabe mencionar que los datos se encuentran en la carpeta _datasets_ del repositorio de la asignatura en _GitHub_: [](https://github.com/LuisEMendoza/RMarkdown-test/tree/master/datasets).
 
-```{r}
-temp <- read.table("datasets/001-challenger.txt", header = FALSE)
+```{r echo=FALSE}
+temp <- read.table("datasets/001-challenger.txt", header = TRUE)
 knitr::kable(temp[1:36, ], caption = 'Temperaturas (°F)')
 ```
 
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+A simple vista, los datos así mostrados no dicen gran cosa. Para ello es deseable organizarlos de manera que muestren algún comportamiento en particular. Una de las maneras más burdas es el __diagrama de tallo y hojas__, el cual se muestra a continuación:
+
+```{r echo=FALSE}
+stem(temp[1:36,])
 ```
 
-## R Markdown
+La explicación del diagrama es sencilla: las cifras que representan las decenas se colocan como tallos, mientras que las cifras que son unidades se vuelven hojas. Este diagrama nos permite saber de manera rápida cuáles son las temperaturas más comunes o frecuentes en nuestro conjunto de datos. También puede decirse que es un __histograma__ muy rudimentario.
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+A continuación se muestra un histograma:
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
+```{r echo=FALSE}
+hist(temp[1:36,])
 ```
 
-## Including Plots
+Y para terminar, una gráfica que posteriormente se verá cómo interpretarse y construirse es la __gráfica de caja__, la cual se muestra a continuación:
 
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
+```{r}
+boxplot(temp[1:36,])
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+Lo anterior, así como la tabla donde se muestran los datos, fue realizado con un _software_ estadístico: __R__.
+
+## Representaciones gráficas y tabulares
+Es importante mencionar que existe una notación que debemos considerar: el número de observaciones presentes en un conjunto de datos dado, se denotará por la letra _n_. También, cada observación se denotará por la letra _x_ acompañada de un subíndice que no tiene ninguna función más que identificar los datos. Es decir, representar una observación como $x_1$ no implica que esta sea la más pequeña. Con esto en mente, pasamos a revisar las representaciones gráficas de los datos.
+
+### Diagrama de tallo y hojas
+Anteriormente se habló un poco de este diagrama. Es bastante sencillo y puede aplicarse a números decimales. Veamos los pasos para producirlos:
+
+1. Se selecciona uno o más de los primeros dígitos para el tallo. Los dígitos restantes serán las hojas.
+2. Los valores del tallo se escriben de manera vertical.
+3. Se anota una hoja por cada observación a la derecha del tallo.
+4. Se indican las unidades para tallos y hojas en algún lugar de la gráfica.
+
+Una gráfica de tallos y hojas da información sobre los siguientes aspectos de los datos:
+* Identificación de un valor típico o representativo.
+* Grado de dispersión en torno al valor típico.
+* Presencia de brechas en los datos.
+* Grado de simetría en la distribución de los valores.
+* Número y localización de crestas.
+* Presencia de valores afuera de la gráfica.
+
+A modo de práctica, tomemos los siguientes valores que representan el flujo de agua en regaderas de Australia en litros por minuto, para _n = 130_. Se muestra también el código en _R_ para mostrar y calcular el diagrama:
+
+```{r}
+flujo <- read.table("datasets/002-flujo.txt", header = FALSE)
+head(flujo)
+```
+
+Construyamos nuestro diagrama:
+
+```{r}
+stem(flujo[1:130,])
+```
+
+
+- ¿Cuál es una velocidad de flujo o gasto típico o representativo?
+- ¿Parece estar la gráfica altamente concentrada o dispersa?
+- ¿Es la distribución de valores razonablemente simétrica? Si no, ¿cómo describiría el alejamiento de la simetría?
+- ¿Describiría cualquier observación como alejada del resto de los datos (un valor extremo)?
+
+### Diagrama de puntos
+Es un resumen atractivo de datos numéricos cuando el conjunto es razonablemente pequeño o existen pocos valores de datos distintos. Cada observación está representada por un punto sobre la ubicación correspondiente en una escala de medición horizontal. Cuando un valor ocurre más de una vez, existe un punto por cada ocurrencia y estos puntos se apilan verticalmente. Como con la gráfica de tallos y hojas, una gráfica de puntos da información sobre la localización, dispersión, extremos y brechas. Usemos como ejemplo el conjunto de las temperaturas del _Challenger_.
+
+```{r}
+stripchart(temp[1:36,], method = 'stack')
+```
+
+### Tablas de frecuencia
+Vamos a trabajar ahora con datos categóricos. Cuando hablamos de categorías, hablamos de variables nominales, es decir, nombres o etiquetas. Por lo tanto, el tratamiento que debemos darles difiere de los números. Por principio de cuentas, debemos tabularlos. Esto se consigue con una tabla de frecuencias. Primero leemos el archivo con los datos:
+
+```{r}
+marca <- c(read.table("datasets/003-marca.txt"))
+marca
+```
+
+Enseguida creamos la tabla:
+```{r}
+mar <- table(marca)
+mar
+```
+
+
+```{r}
+marca = as.data.frame(mar)
+pie(mar)
+```
+
+### Distribuciones de frecuencia
