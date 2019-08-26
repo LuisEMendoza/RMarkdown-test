@@ -2,7 +2,7 @@
 title: "Git y GitHub en RStudio"
 ---
 
-# Git y GitHub en RStudio
+
 El uso del control de versiones es obligatorio cuando se trabaja de manera colectiva y se quiere controlar el flujo de trabajo y el seguimiento de los cambios en el mismo. Incluso, para trabajar de manera individual, es deseable mantener vigilados los cambios realizados a un documento importante. 
 RStudio trabaja bastante bien con Git (recordando que utilizaremos Github para hospedar nuestros archivos). Así que comencemos. 
 
