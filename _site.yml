@@ -11,6 +11,8 @@
         - text: "Probabilidad y Estadística"
         - text: "Unidad 1"
           href: Estadistica-descriptiva.html
+        - text: "Unidad 2"
+          href: Probabilidad.html
   output:
     html_document:
         theme: cosmo
