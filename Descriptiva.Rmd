@@ -15,8 +15,8 @@ Dividiremos la Estadística en dos ramas por el momento. En primera instancia, e
 La tragedia que sufrió el transbordador espacial Challenger y sus astronautas en 1986 condujo a varios estudios para investigar las razones de la falla de la misión. La atención se enfocó de inmediato en el comportamiento de los sellos anulares del motor del cohete. He aquí datos derivados de observaciones en x = temperatura del sello anular (°F) en cada encendido de prueba o lanzamiento del motor del cohete del transbordador (Presidential Commission on the Space Shuttle Challenger Accident, Vol. 1, 1986: 129-131).
 
 ```{r}
-df <- read.table("datasets/001-challenger.txt", 
-                 header = FALSE)
+df <- read.table("datasets/001-challenger.txt", header = FALSE)
+df
 ```
 
 
