@@ -125,9 +125,10 @@ df
 
 ```{r}
 intervalos <- df$breaks
-frecuencias <- cut(consumo, breaks = intervalos, dig.lab = 2, right = FALSE)
-tabla.frec <- table(frecuencias)
-as.data.frame(tabla.frec)
+clases <- cut(consumo, breaks = intervalos, dig.lab = 2, right = FALSE)
+tabla.frec <- table(clases)
+tabla <- as.data.frame(tabla.frec)
+tabla
 ```
 
 El histograma quedaría así:

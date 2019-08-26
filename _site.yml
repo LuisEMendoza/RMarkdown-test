@@ -13,6 +13,11 @@
           href: Descriptiva.html
         - text: "Unidad 2"
           href: Probabilidad.html
+        - text: "Optimización I"
+        - text: "Unidad 1"
+          href: Introducción.html
+        - text: "Unidad 2"
+          href: Modelos.html
   output:
     html_document:
         theme: cosmo
