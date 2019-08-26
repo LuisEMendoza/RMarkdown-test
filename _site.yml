@@ -2,10 +2,14 @@
   output_dir: "docs"
   navbar:
     left:
-    - text: "DesArraigo"
+    - text: "DesArraigo "
       href: index.html
     - text: "Git y GitHub en RStudio"
       href: GitHub-en-RStudio.html
+      menu:
+        - text: "Probabilidad y Estadística"
+        - text: "Unidad 1"
+          href: Estadistica-descriptiva.html
   output:
     html_document:
         theme: cosmo
