@@ -1,7 +1,5 @@
 ---
 title: "DesArraigo"
-author: "Luis Enrique Mendoza Ruiz"
-date: "24/8/2019"
 output: html_document
 ---
 
