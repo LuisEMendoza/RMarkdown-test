@@ -1,17 +1,45 @@
 ---
-title: "R Notebook"
+title: "Estadística Descriptiva"
 ---
 
-This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+Los métodos estadísticos son muy importantes, ya que ellos nos permiten conocer los fenómenos que nos rodean, en aspectos que quizá no nos imaginamos. Por doquier estamos expuestos a los __datos__, y eso se extiende a científicos e ingenieros en sus actividades profesionales.  
+Es muy importante definir los objetos que se constituyen en una __población__ de interés. Dicha población puede ser el conjunto de todos los productos elaborados en una fábrica un día determinado, o todos los estudiantes egresados de cierta carrera en la generación 2017, por ejemplo. Cuando tenemos acceso a todos los datos deseados de todos los miembros de una población, tenemos un __censo__.  
+Sin embargo, es muy complicado poder realizar censos, ya sea por escasez de tiempo o de dinero. Por ello, se prefiere seleccionar un grupo pequeño de elementos de la población de manera aleatoria, para tener lo que se conoce como una __muestra__.  
+Cabe mencionar que en ocasiones, no nos interesan todas las características de los objetos de una población. Por ejemplo, puede que hayamos reunido a 50 personas para analizar su estado de salud. Probablemente debamos preguntarles su edad, su peso, su estatura y tomarles medidas de su temperatura o presión arterial; sin embargo, no tiene sentido preguntarles qué equipo de futbol es su favorito o a qué hora pasan su noticiero predilecto. Lo que necesitamos son sus características.  
+A las características podemos dividirlas en dos: __categóricas__ y __numéricas__. Las primeras son etiquetas, como los nombres o la marca de un coche. Las segundas pueden expresarse con números. Definamos una __variable__ como cualquier característica cuyo valor puede cambiar de un sujeto a otro.
 
-Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
+## Ramas de la Estadística
+Dividiremos la Estadística en dos ramas por el momento. En primera instancia, es necesario recopilar, organizar, resumir y presentar los datos; de esto se encarga la __Estadística Descriptiva__. Por otro lado, se desea extender las propiedades de la muestra hacia la población, mediante inferencias que permitan comprender mejor su comportamiento e incluso pronosticarlo; esa es la función de la __Estadística Inferencial__.
+
+## Estadística Descriptiva en acción
+La tragedia que sufrió el transbordador espacial Challenger y sus astronautas en 1986 condujo a varios estudios para investigar las razones de la falla de la misión. La atención se enfocó de inmediato en el comportamiento de los sellos anulares del motor del cohete. He aquí datos derivados de observaciones en x = temperatura del sello anular (°F) en cada encendido de prueba o lanzamiento del motor del cohete del transbordador (Presidential Commission on the Space Shuttle Challenger Accident, Vol. 1, 1986: 129-131).
 
 ```{r}
-plot(cars)
+df <- read.table("datasets/001-challenger.txt", 
+                 header = FALSE)
 ```
 
-Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
 
-When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
 
-The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
