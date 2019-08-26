@@ -9,6 +9,6 @@
       href: GitHub-en-RStudio.html
   output:
     html_document:
-        theme: cosmo
+        theme: united
         highlight: tango
     
