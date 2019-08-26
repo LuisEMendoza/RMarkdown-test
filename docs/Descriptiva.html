@@ -321,7 +321,7 @@ A las características podemos dividirlas en dos: <strong>categóricas</strong> 
 </div>
 <div id="estadistica-descriptiva-en-accion" class="section level2">
 <h2>Estadística Descriptiva en acción</h2>
-<p>La tragedia que sufrió el transbordador espacial Challenger y sus astronautas en 1986 condujo a varios estudios para investigar las razones de la falla de la misión. La atención se enfocó de inmediato en el comportamiento de los sellos anulares del motor del cohete. He aquí datos derivados de observaciones en x = temperatura del sello anular (°F) en cada encendido de prueba o lanzamiento del motor del cohete del transbordador (Presidential Commission on the Space Shuttle Challenger Accident, Vol. 1, 1986: 129-131). Los datos se presentan en una sola columna para dejar en claro que se refieren a datos univariables. Cabe mencionar que los datos se encuentran en la carpeta <em>datasets</em> del repositorio de la asignatura en <em>GitHub</em>: <a href="https://github.com/LuisEMendoza/RMarkdown-test/tree/master/datasets"></a>.</p>
+<p>La tragedia que sufrió el transbordador espacial Challenger y sus astronautas en 1986 condujo a varios estudios para investigar las razones de la falla de la misión. La atención se enfocó de inmediato en el comportamiento de los sellos anulares del motor del cohete. He aquí datos derivados de observaciones en x = temperatura del sello anular (°F) en cada encendido de prueba o lanzamiento del motor del cohete del transbordador (Presidential Commission on the Space Shuttle Challenger Accident, Vol. 1, 1986: 129-131). Los datos se presentan en una sola columna para dejar en claro que se refieren a datos univariables. Cabe mencionar que los datos se encuentran en la carpeta <em>datasets</em> del repositorio de la asignatura en <a href="https://github.com/LuisEMendoza/RMarkdown-test/tree/master/datasets">GitHub</a>.</p>
 <table>
 <caption>Temperaturas (°F)</caption>
 <thead>
@@ -452,10 +452,10 @@ A las características podemos dividirlas en dos: <strong>categóricas</strong> 
 ##   8 | 0134</code></pre>
 <p>La explicación del diagrama es sencilla: las cifras que representan las decenas se colocan como tallos, mientras que las cifras que son unidades se vuelven hojas. Este diagrama nos permite saber de manera rápida cuáles son las temperaturas más comunes o frecuentes en nuestro conjunto de datos. También puede decirse que es un <strong>histograma</strong> muy rudimentario.</p>
 <p>A continuación se muestra un histograma:</p>
-<p><img src="Descriptiva_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p><img src="Descriptiva_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
 <p>Y para terminar, una gráfica que posteriormente se verá cómo interpretarse y construirse es la <strong>gráfica de caja</strong>, la cual se muestra a continuación:</p>
 <pre class="r"><code>boxplot(temp[1:36,])</code></pre>
-<p><img src="Descriptiva_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p><img src="Descriptiva_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
 <p>Lo anterior, así como la tabla donde se muestran los datos, fue realizado con un <em>software</em> estadístico: <strong>R</strong>.</p>
 </div>
 <div id="representaciones-graficas-y-tabulares" class="section level2">
@@ -514,7 +514,7 @@ head(flujo)</code></pre>
 <h3>Diagrama de puntos</h3>
 <p>Es un resumen atractivo de datos numéricos cuando el conjunto es razonablemente pequeño o existen pocos valores de datos distintos. Cada observación está representada por un punto sobre la ubicación correspondiente en una escala de medición horizontal. Cuando un valor ocurre más de una vez, existe un punto por cada ocurrencia y estos puntos se apilan verticalmente. Como con la gráfica de tallos y hojas, una gráfica de puntos da información sobre la localización, dispersión, extremos y brechas. Usemos como ejemplo el conjunto de las temperaturas del <em>Challenger</em>.</p>
 <pre class="r"><code>stripchart(temp[1:36,], method = &#39;stack&#39;)</code></pre>
-<p><img src="Descriptiva_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p><img src="Descriptiva_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
 </div>
 <div id="tablas-de-frecuencia" class="section level3">
 <h3>Tablas de frecuencia</h3>
@@ -535,10 +535,64 @@ mar</code></pre>
 ##    Apple      HTC   Huawei       LG Motorola    Nokia  Samsung   Xiaomi 
 ##        8        1        4        1        5        2       10        1</code></pre>
 <pre class="r"><code>pie(mar)</code></pre>
-<p><img src="Descriptiva_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<p><img src="Descriptiva_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
 </div>
 <div id="distribuciones-de-frecuencia" class="section level3">
 <h3>Distribuciones de frecuencia</h3>
+<p>En ocasiones es necesario trabajar con valores que no se repiten tanto, como en el caso que se presenta enseguida.</p>
+<p>Las compañías eléctricas requieren información sobre el consumo de los clientes para obtener pronósticos precisos de demandas. Investigadores de Wisconsin Power and Light determinaron el consumo de energía (BTU) durante un periodo particular con una muestra de 90 hogares calentados con gas. Se calculó un valor de consumo promedio como sigue:</p>
+<pre class="r"><code>consumo &lt;- scan(&quot;datasets/004-horno.txt&quot;)
+consumo</code></pre>
+<pre><code>##  [1]  2.97  4.00  5.20  5.56  5.94  5.98  6.35  6.62  6.72  6.78  6.80
+## [12]  6.85  6.94  7.15  7.16  7.23  7.29  7.62  7.62  7.69  7.73  7.87
+## [23]  7.93  8.00  8.26  8.29  8.37  8.47  8.54  8.58  8.61  8.67  8.69
+## [34]  8.81  9.07  9.27  9.37  9.43  9.52  9.58  9.60  9.76  9.82  9.83
+## [45]  9.83  9.84  9.96 10.04 10.21 10.28 10.28 10.30 10.35 10.36 10.40
+## [56] 10.49 10.50 10.64 10.95 11.09 11.12 11.21 11.29 11.43 11.62 11.70
+## [67] 11.70 12.16 12.19 12.28 12.31 12.62 12.69 12.71 12.91 12.92 13.11
+## [78] 13.38 13.42 13.43 13.47 13.60 13.96 14.24 14.35 15.12 15.24 16.06
+## [89] 16.90 18.26</code></pre>
+<p>Podríamos graficar el histograma directamente, pero queremos obtener la distribución de frecuencias también. Para ello, ejecutamos la función <code>hist</code> pero con la opción de no mostrarlo.</p>
+<pre class="r"><code>df &lt;- hist(consumo, breaks = &#39;Sturges&#39;, plot = FALSE)
+df</code></pre>
+<pre><code>## $breaks
+##  [1]  2  4  6  8 10 12 14 16 18 20
+## 
+## $counts
+## [1]  2  4 18 23 20 16  4  2  1
+## 
+## $density
+## [1] 0.011111111 0.022222222 0.100000000 0.127777778 0.111111111 0.088888889
+## [7] 0.022222222 0.011111111 0.005555556
+## 
+## $mids
+## [1]  3  5  7  9 11 13 15 17 19
+## 
+## $xname
+## [1] &quot;consumo&quot;
+## 
+## $equidist
+## [1] TRUE
+## 
+## attr(,&quot;class&quot;)
+## [1] &quot;histogram&quot;</code></pre>
+<pre class="r"><code>intervalos &lt;- df$breaks
+frecuencias &lt;- cut(consumo, breaks = intervalos, dig.lab = 2, right = FALSE)
+tabla.frec &lt;- table(frecuencias)
+as.data.frame(tabla.frec)</code></pre>
+<pre><code>##   frecuencias Freq
+## 1       [2,4)    1
+## 2       [4,6)    5
+## 3       [6,8)   17
+## 4      [8,10)   24
+## 5     [10,12)   20
+## 6     [12,14)   16
+## 7     [14,16)    4
+## 8     [16,18)    2
+## 9     [18,20)    1</code></pre>
+<p>El histograma quedaría así:</p>
+<pre class="r"><code>hist(consumo)</code></pre>
+<p><img src="Descriptiva_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
 </div>
 </div>
 
