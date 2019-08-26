@@ -54,12 +54,12 @@ Anteriormente se habló un poco de este diagrama. Es bastante sencillo y puede a
 4. Se indican las unidades para tallos y hojas en algún lugar de la gráfica.
 
 Una gráfica de tallos y hojas da información sobre los siguientes aspectos de los datos:
-* Identificación de un valor típico o representativo.
-* Grado de dispersión en torno al valor típico.
-* Presencia de brechas en los datos.
-* Grado de simetría en la distribución de los valores.
-* Número y localización de crestas.
-* Presencia de valores afuera de la gráfica.
+- Identificación de un valor típico o representativo.
+- Grado de dispersión en torno al valor típico.
+- Presencia de brechas en los datos.
+- Grado de simetría en la distribución de los valores.
+- Número y localización de crestas.
+- Presencia de valores afuera de la gráfica.
 
 A modo de práctica, tomemos los siguientes valores que representan el flujo de agua en regaderas de Australia en litros por minuto, para _n = 130_. Se muestra también el código en _R_ para mostrar y calcular el diagrama:
 
@@ -103,7 +103,6 @@ mar
 
 
 ```{r}
-marca = as.data.frame(mar)
 pie(mar)
 ```
 
