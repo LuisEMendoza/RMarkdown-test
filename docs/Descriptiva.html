@@ -322,45 +322,126 @@ A las características podemos dividirlas en dos: <strong>categóricas</strong> 
 <div id="estadistica-descriptiva-en-accion" class="section level2">
 <h2>Estadística Descriptiva en acción</h2>
 <p>La tragedia que sufrió el transbordador espacial Challenger y sus astronautas en 1986 condujo a varios estudios para investigar las razones de la falla de la misión. La atención se enfocó de inmediato en el comportamiento de los sellos anulares del motor del cohete. He aquí datos derivados de observaciones en x = temperatura del sello anular (°F) en cada encendido de prueba o lanzamiento del motor del cohete del transbordador (Presidential Commission on the Space Shuttle Challenger Accident, Vol. 1, 1986: 129-131).</p>
-<pre class="r"><code>df &lt;- read.table(&quot;datasets/001-challenger.txt&quot;, header = FALSE)
-df</code></pre>
-<pre><code>##    V1
-## 1  84
-## 2  49
-## 3  61
-## 4  40
-## 5  83
-## 6  67
-## 7  45
-## 8  66
-## 9  70
-## 10 69
-## 11 80
-## 12 58
-## 13 68
-## 14 60
-## 15 67
-## 16 72
-## 17 73
-## 18 70
-## 19 57
-## 20 63
-## 21 70
-## 22 78
-## 23 52
-## 24 67
-## 25 53
-## 26 67
-## 27 75
-## 28 61
-## 29 70
-## 30 81
-## 31 76
-## 32 79
-## 33 75
-## 34 76
-## 35 58
-## 36 31</code></pre>
+<pre class="r"><code>temp &lt;- read.table(&quot;datasets/001-challenger.txt&quot;, header = FALSE)
+knitr::kable(temp[1:36, ], caption = &#39;Temperaturas (°F)&#39;)</code></pre>
+<table>
+<caption>Temperaturas (°F)</caption>
+<thead>
+<tr class="header">
+<th align="right">x</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">84</td>
+</tr>
+<tr class="even">
+<td align="right">49</td>
+</tr>
+<tr class="odd">
+<td align="right">61</td>
+</tr>
+<tr class="even">
+<td align="right">40</td>
+</tr>
+<tr class="odd">
+<td align="right">83</td>
+</tr>
+<tr class="even">
+<td align="right">67</td>
+</tr>
+<tr class="odd">
+<td align="right">45</td>
+</tr>
+<tr class="even">
+<td align="right">66</td>
+</tr>
+<tr class="odd">
+<td align="right">70</td>
+</tr>
+<tr class="even">
+<td align="right">69</td>
+</tr>
+<tr class="odd">
+<td align="right">80</td>
+</tr>
+<tr class="even">
+<td align="right">58</td>
+</tr>
+<tr class="odd">
+<td align="right">68</td>
+</tr>
+<tr class="even">
+<td align="right">60</td>
+</tr>
+<tr class="odd">
+<td align="right">67</td>
+</tr>
+<tr class="even">
+<td align="right">72</td>
+</tr>
+<tr class="odd">
+<td align="right">73</td>
+</tr>
+<tr class="even">
+<td align="right">70</td>
+</tr>
+<tr class="odd">
+<td align="right">57</td>
+</tr>
+<tr class="even">
+<td align="right">63</td>
+</tr>
+<tr class="odd">
+<td align="right">70</td>
+</tr>
+<tr class="even">
+<td align="right">78</td>
+</tr>
+<tr class="odd">
+<td align="right">52</td>
+</tr>
+<tr class="even">
+<td align="right">67</td>
+</tr>
+<tr class="odd">
+<td align="right">53</td>
+</tr>
+<tr class="even">
+<td align="right">67</td>
+</tr>
+<tr class="odd">
+<td align="right">75</td>
+</tr>
+<tr class="even">
+<td align="right">61</td>
+</tr>
+<tr class="odd">
+<td align="right">70</td>
+</tr>
+<tr class="even">
+<td align="right">81</td>
+</tr>
+<tr class="odd">
+<td align="right">76</td>
+</tr>
+<tr class="even">
+<td align="right">79</td>
+</tr>
+<tr class="odd">
+<td align="right">75</td>
+</tr>
+<tr class="even">
+<td align="right">76</td>
+</tr>
+<tr class="odd">
+<td align="right">58</td>
+</tr>
+<tr class="even">
+<td align="right">31</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div id="r-markdown" class="section level2">
 <h2>R Markdown</h2>
