@@ -18,6 +18,9 @@
           href: IntroPL.html
         - text: "Unidad 2"
           href: Modelos.html
+        - text: "Optimización II"
+        - text: "Unidad 1"
+          href: CPM.html
   output:
     html_document:
         theme: cosmo
