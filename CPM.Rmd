@@ -1,5 +1,5 @@
 ---
-title: "CPM"
+title: "Administración de proyectos: CPM / PERT"
 ---
 
 - Los proyectos modernos, en rangos que van desde construir un centro comercial suburbano hasta poner un hombre en la luna, son extremadamente grandes, complejos y costosos. 
