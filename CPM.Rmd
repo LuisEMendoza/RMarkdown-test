@@ -27,11 +27,11 @@ _El traslado inminente de la operación de las tarjetas de crédito hacia otra c
 _El traslado es difícil de coordinar porque involucra muchas divisiones diferentes de la compañía. “Bienes raíces” tiene que seleccionar uno de tres sitios posibles para las oficinas. “Personal” tiene que determinar qué empleados se mudarán, cuántos nuevos empleados se contratarán y quién los va a capacitar. El grupo de sistemas y la oficina del tesorero deben organizar y poner en práctica los procedimientos de operación y los arreglos financieros para la nueva operación. Los arquitectos tendrán que diseñar el espacio interior y supervisar las mejoras estructurales que se necesiten. Cada uno de los sitios que se están considerando es un edificio existente, con la cantidad apropiada de espacio libre. Sin embargo, se deberán adquirir las divisiones entre oficinas, las instalaciones de computadoras, los muebles, y así sucesivamente._
 _Un segundo factor de complicación es que existe interdependencia entre las actividades. En otras palabras, algunas partes del proyecto no pueden iniciarse hasta que otras estén terminadas. Considere dos ejemplos obvios: no puede montar el interior de una oficina antes de que ésta sea diseñada. Tampoco puede contratar nuevos empleados hasta que haya determinado cuáles son los requerimientos de personal._
 
-__El primer paso en el proceso es definir las actividades del proyecto y establecer las relaciones de precedencia apropiadas. Éste es un primer paso importante, ya que errores u omisiones en esta etapa pueden llevar a una programación desastrosamente imprecisa.
+El primer paso en el proceso es definir las actividades del proyecto y establecer las relaciones de precedencia apropiadas. Éste es un primer paso importante, ya que errores u omisiones en esta etapa pueden llevar a una programación desastrosamente imprecisa.
 En la tabla siguiente se muestra la primera lista de actividades que se prepara para el traslado (las columnas llamadas “Tiempo” y “Recursos” son indicadores de elementos por considerar). Ésta es la parte más importante de cualquier proyecto PERT o CPM y usualmente se lleva a cabo involucrando a varias personas, de forma que no se pasen por alto actividades importantes. Todo el trabajo debe ser un esfuerzo de equipo, no un esfuerzo individual.
 
 ACTIVIDAD | DESCRIPCIÓN | PREDECESORES | TIEMPO | RECURSOS
---- | --- | --- | --- | ---
+:---:| --- | :---: | :---: | ---
 A | Seleccionar sitio de oficinas | - | 3 |
 B | Crear plan organizacional y financiero | -  | 5  |
 C | Determinar requerimientos de personal | B | 3  |

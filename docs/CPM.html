@@ -345,86 +345,86 @@ $(document).ready(function () {
 <h2>Ejemplo de una red CPM</h2>
 <p>Veamos a continuación un proyecto que cuenta con actividades cuyos tiempos de ejecución son conocidos.</p>
 <p><em>El traslado inminente de la operación de las tarjetas de crédito hacia otra ciudad, desde la actual oficina central, es un proyecto importante para una compañía bancaria. La mesa directiva ha establecido como fecha límite 22 semanas para que el traslado esté terminado. Usted está a cargo de planear el traslado, de verificar que todo resulte de acuerdo con el plan y de asegurarse de que el plazo fijado se cumpla.</em> <em>El traslado es difícil de coordinar porque involucra muchas divisiones diferentes de la compañía. “Bienes raíces” tiene que seleccionar uno de tres sitios posibles para las oficinas. “Personal” tiene que determinar qué empleados se mudarán, cuántos nuevos empleados se contratarán y quién los va a capacitar. El grupo de sistemas y la oficina del tesorero deben organizar y poner en práctica los procedimientos de operación y los arreglos financieros para la nueva operación. Los arquitectos tendrán que diseñar el espacio interior y supervisar las mejoras estructurales que se necesiten. Cada uno de los sitios que se están considerando es un edificio existente, con la cantidad apropiada de espacio libre. Sin embargo, se deberán adquirir las divisiones entre oficinas, las instalaciones de computadoras, los muebles, y así sucesivamente.</em> <em>Un segundo factor de complicación es que existe interdependencia entre las actividades. En otras palabras, algunas partes del proyecto no pueden iniciarse hasta que otras estén terminadas. Considere dos ejemplos obvios: no puede montar el interior de una oficina antes de que ésta sea diseñada. Tampoco puede contratar nuevos empleados hasta que haya determinado cuáles son los requerimientos de personal.</em></p>
-<p>__El primer paso en el proceso es definir las actividades del proyecto y establecer las relaciones de precedencia apropiadas. Éste es un primer paso importante, ya que errores u omisiones en esta etapa pueden llevar a una programación desastrosamente imprecisa. En la tabla siguiente se muestra la primera lista de actividades que se prepara para el traslado (las columnas llamadas “Tiempo” y “Recursos” son indicadores de elementos por considerar). Ésta es la parte más importante de cualquier proyecto PERT o CPM y usualmente se lleva a cabo involucrando a varias personas, de forma que no se pasen por alto actividades importantes. Todo el trabajo debe ser un esfuerzo de equipo, no un esfuerzo individual.</p>
+<p>El primer paso en el proceso es definir las actividades del proyecto y establecer las relaciones de precedencia apropiadas. Éste es un primer paso importante, ya que errores u omisiones en esta etapa pueden llevar a una programación desastrosamente imprecisa. En la tabla siguiente se muestra la primera lista de actividades que se prepara para el traslado (las columnas llamadas “Tiempo” y “Recursos” son indicadores de elementos por considerar). Ésta es la parte más importante de cualquier proyecto PERT o CPM y usualmente se lleva a cabo involucrando a varias personas, de forma que no se pasen por alto actividades importantes. Todo el trabajo debe ser un esfuerzo de equipo, no un esfuerzo individual.</p>
 <table>
 <thead>
 <tr class="header">
-<th>ACTIVIDAD</th>
+<th align="center">ACTIVIDAD</th>
 <th>DESCRIPCIÓN</th>
-<th>PREDECESORES</th>
-<th>TIEMPO</th>
+<th align="center">PREDECESORES</th>
+<th align="center">TIEMPO</th>
 <th>RECURSOS</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>A</td>
+<td align="center">A</td>
 <td>Seleccionar sitio de oficinas</td>
-<td>-</td>
-<td>3</td>
+<td align="center">-</td>
+<td align="center">3</td>
 <td></td>
 </tr>
 <tr class="even">
-<td>B</td>
+<td align="center">B</td>
 <td>Crear plan organizacional y financiero</td>
-<td>-</td>
-<td>5</td>
+<td align="center">-</td>
+<td align="center">5</td>
 <td></td>
 </tr>
 <tr class="odd">
-<td>C</td>
+<td align="center">C</td>
 <td>Determinar requerimientos de personal</td>
-<td>B</td>
-<td>3</td>
+<td align="center">B</td>
+<td align="center">3</td>
 <td></td>
 </tr>
 <tr class="even">
-<td>D</td>
+<td align="center">D</td>
 <td>Diseñar la instalación</td>
-<td>A, C</td>
-<td>4</td>
+<td align="center">A, C</td>
+<td align="center">4</td>
 <td></td>
 </tr>
 <tr class="odd">
-<td>E</td>
+<td align="center">E</td>
 <td>Construir el interior</td>
-<td>D</td>
-<td>8</td>
+<td align="center">D</td>
+<td align="center">8</td>
 <td></td>
 </tr>
 <tr class="even">
-<td>F</td>
+<td align="center">F</td>
 <td>Seleccionar al personal que se va a transferir</td>
-<td>C</td>
-<td>2</td>
+<td align="center">C</td>
+<td align="center">2</td>
 <td></td>
 </tr>
 <tr class="odd">
-<td>G</td>
+<td align="center">G</td>
 <td>Contratar nuevos empleados</td>
-<td>F</td>
-<td>4</td>
+<td align="center">F</td>
+<td align="center">4</td>
 <td></td>
 </tr>
 <tr class="even">
-<td>H</td>
+<td align="center">H</td>
 <td>Trasladar registros, personal clave, etc</td>
-<td>F</td>
-<td>2</td>
+<td align="center">F</td>
+<td align="center">2</td>
 <td></td>
 </tr>
 <tr class="odd">
-<td>I</td>
+<td align="center">I</td>
 <td>Hacer arreglos financieros con otras instituciones</td>
-<td>B</td>
-<td>5</td>
+<td align="center">B</td>
+<td align="center">5</td>
 <td></td>
 </tr>
 <tr class="even">
-<td>J</td>
+<td align="center">J</td>
 <td>Capacitar nuevo personal</td>
-<td>H, E, G</td>
-<td>3</td>
+<td align="center">H, E, G</td>
+<td align="center">3</td>
 <td></td>
 </tr>
 </tbody>
