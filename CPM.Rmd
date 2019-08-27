@@ -1,0 +1,8 @@
+---
+title: "CPM"
+---
+
+```mermaid
+graph LR
+A --> B
+```

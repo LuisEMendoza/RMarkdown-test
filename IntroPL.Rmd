@@ -97,7 +97,7 @@ Aunque el modelo anterior tiene una función objetivo que se pretende maximizar 
 9. __Retroalimentación__. Las soluciones óptimas obtenidas mediante el modelo pueden resultar lo ideal para el proceso que se analiza. Sin embargo, en la realidad existen muchos factores que pueden causar que no funcionen. Por ello se debe estar atento a cualquier cambio en el proceso y tomar las medidas pertinentes que no alteren el sistema.
 
 ## Suposiciones de la programación lineal
-- Proporcionalidad
-- Aditividad
-- Divisibilidad
-- Certidumbre
+- __Proporcionalidad__. La contribución a la utilidad hecha por un producto es la misma por cada uno, sin importar la cantidad elaborada y vendida. 
+- __Aditividad__. La aportación a las utilidades de un producto se suma a las aportaciones de los otros productos para conocer la aportación total. Lo mismo pasa con los recursos consumidos por los demás productos. Para encontrar la totalidad de consumo, simplemente se suman los consumos individuales.
+- __Divisibilidad__. Las variables pueden tomar cualquier valor fraccionario.
+- __Certidumbre__. Se supone que se conocen de manera exacta todos los coeficientes de las variables en la función objetivo, el consumo y la disponibilidad de los recursos.
