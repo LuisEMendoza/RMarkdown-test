@@ -12,7 +12,7 @@
 
 
 
-<title>Introducción a la programación lineal</title>
+<title>Introducción a la Programación Lineal</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -312,12 +312,138 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Introducción a la programación lineal</h1>
+<h1 class="title toc-ignore">Introducción a la Programación Lineal</h1>
 
 </div>
 
 
-
+<p>La Programación Lineal puede considerarse como una constante disputa entre actividades por recursos generalmente limitados, con el objetivo de obtener el mejor rendimiento. Este último podemos entenderlo de dos maneras: - <strong>Maximización</strong>: cuando se desea obtener la mayor utilidad o ganancia posible. - <strong>Minimización</strong>: cuando se desea el mínimo de egresos posible en una organización.</p>
+<p>Para comprender mejor lo que es la programación lineal, veamos el siguiente ejemplo:</p>
+<div id="ejemplo" class="section level2">
+<h2>Ejemplo</h2>
+<p>Una carpintería produce sillas, mesas y escritorios cuyas contribuciones a las ganancias de la misma son de $5,000, $8,000 y $6,000 por unidad, respectivamente.</p>
+<p>Para la producción de estos artículos la compañía cuenta con una disponibilidad semanal de 100 metros de madera, 150 metros de tubo y 120 horas de mano de obra (en horas-hombre).</p>
+<p>Mediante un estudio se ha determinado que para producir una silla son necesarios 5 metros de madera, 3 metros de tubo y 4 horas de mano de obra; para producir una mesa se requieren 3 metros de madera, 6 de tubo y 3 horas-hombre; mientras que para producir un escritorio se utilizan 7 metros de madera, 4 de tubo y 3 horas.</p>
+<p>Se desea plantear el modelo de programación lineal que permita incrementar al máximo las utilidades de la compañía.</p>
+</div>
+<div id="analisis-de-la-informacion" class="section level2">
+<h2>Análisis de la información</h2>
+<p>Es importante determinar qué tipo de problema es el que se presenta. En el ejemplo, es notorio que se está hablando de producción de artículos. A estos problemas se les conoce como problemas de mezcla de productos, en los cuales se desea encontrar la cantidad de los mismos a producir, combinados o no, para obtener la ganancia máxima posible a partir de materia prima que no es infinita.</p>
+<p>Con el tipo de problema definido se sigue ahora por determinar cuáles son las <strong>variables</strong> a calcular. En problemas de mezcla de productos, las variables se corresponden con las cantidades a producir de cada artículo. Por lo tanto, cada producto representa una variable. En nuestro ejemplo tenemos tres artículos, por lo tanto, tendremos tres variables en nuestro modelo.</p>
+<p>Continuamos ahora construyendo la expresión de lo que se quiere optimizar. Tenemos el dato de la aportación a las utilidades que tienen los tres productos, así que al ser ganancias, se desea <em>maximizar</em> dichas ganancias</p>
+<p>El siguiente paso es definir cuáles son los recursos por los cuales los productos estarán en pugna, es decir, las materias primas que tendrán que repartirse entre los artículos a producir. Como sabemos que la materia prima no es infinita, cada expresión de nuestro modelo que represente dicha limitación recibe el nombre de <strong>restricción</strong>. Debe haber una restricción por cada recurso limitado, así que para nuestro ejemplo tendremos tres restricciones: una por la madera, la segunda por el tubo y la última por las horas-hombre disponibles.</p>
+<p>Por último, debemos mencionar que por mera lógica, no pueden haber cantidades de productos negativas. Por esta razón, hay que agregar unas restricciones por defecto y que serán comunes a todos los modelos de programación lineal: las <strong>restricciones de no negatividad</strong>.</p>
+<p>Todo lo anterior puede ser condensado en una tabla preparada, tal como la siguiente:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Recurso</th>
+<th>Silla</th>
+<th>Mesa</th>
+<th>Escritorio</th>
+<th>Disponibilidad</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Madera</td>
+<td>5m</td>
+<td>3m</td>
+<td>7 m</td>
+<td>100 m</td>
+</tr>
+<tr class="even">
+<td>Tubo</td>
+<td>3m</td>
+<td>6m</td>
+<td>4m</td>
+<td>150 m</td>
+</tr>
+<tr class="odd">
+<td>Mano de obra</td>
+<td>4 hr</td>
+<td>3 hr</td>
+<td>3 hr</td>
+<td>120 hr</td>
+</tr>
+<tr class="even">
+<td>Utilidad</td>
+<td>$5,000</td>
+<td>$8,000</td>
+<td>$6,000</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Variable</td>
+<td><span class="math inline">\(x_1\)</span></td>
+<td><span class="math inline">\(x_2\)</span></td>
+<td><span class="math inline">\(x_3\)</span></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Con lo anterior, podemos construir un modelo de programación lineal que represente este proceso. Tomando en cuenta que, por ejemplo, la variable <span class="math inline">\(x_1\)</span> se refiere a la cantidad de sillas a producir (<span class="math inline">\(x_2\)</span> la cantidad de mesas y <span class="math inline">\(x_3\)</span> la de escritorios), y el objetivo es incrementar al máximo posible la utilidad total de la organización, la expresión matemática que nos permite representar este hecho quedaría de la siguiente forma: <span class="math display">\[
+5000x_1 + 8000x_2 + 6000x_3
+\]</span></p>
+<p>Y se le llama <strong>función objetivo</strong>. Esta debe ser maximizada considerando que la madera, el tubo y la mano de obra es limitada, sin poder utilizar más de lo disponible. Las expresiones que nos permiten representar esta limitación quedarían de la siguiente forma: <span class="math display">\[
+5x_1+3x_2+7x_3 \leq 100 \\
+3x_1+6x_2+4x_3 \leq 150 \\
+4x_1+3x_2+3x_3 \leq 120
+\]</span></p>
+<p>Las expresiones anteriores se conocen como <strong>restricciones funcionales</strong>. Ahora bien, falta agregar las restricciones de no negatividad, las cuales asegurarán que ninguna variable tendrá un valor negativo al resolver al problema.</p>
+<p><span class="math display">\[
+x_1,x_2.x_3 \geq 0
+\]</span></p>
+<p>Nuesto modelo, en conjunto, quedaría de la siguiente manera:</p>
+<p><span class="math display">\[
+max: Z = 5000x_1 + 8000x_2 + 6000x_3 \\
+\ \\
+sujeto \ a: \\
+5x_1+3x_2+7x_3 \leq 100 \\
+3x_1+6x_2+4x_3 \leq 150 \\
+4x_1+3x_2+3x_3 \leq 120 \\
+x_1,x_2.x_3 \geq 0
+\]</span> ### Forma canónica del modelo La manera más sencilla de representar un modelo de programación lineal es la forma canónica, la cual resume lo que anteriormente escribimos. Su forma es la siguiente:</p>
+<p><span class="math display">\[
+Max: Z = CX \\
+\ \\
+s. a. \\
+AX \leq b \\
+X \geq 0
+\]</span></p>
+<div id="otras-formas-del-modelo" class="section level3">
+<h3>Otras formas del modelo</h3>
+<p>Aunque el modelo anterior tiene una función objetivo que se pretende maximizar y restricciones del tipo <em>menor o igual que</em>, no debemos creer que siempre serán así. Lo anterior depende de la naturaleza del problema y puede incluir:</p>
+<ul>
+<li>La función objetivo puede ser minimizada.</li>
+<li>Las restricciones pueden ser del tipo <em>mayor que</em> o estár mezcladas con unas del tipo <em>menor que</em>.</li>
+<li>Las restricciones también pueden ser de igualdad estricta.</li>
+</ul>
+</div>
+</div>
+<div id="procedimiento-para-construir-modelos" class="section level2">
+<h2>Procedimiento para construir modelos</h2>
+<ol style="list-style-type: decimal">
+<li><strong>Formulación del modelo</strong>. Recopilación, organización y estructuración de toda la información posibe acerca del problema, tal como las variables, disponibilidades, parámetros de optimización y la manera en la que interactúan.</li>
+<li><strong>Análisis de la información</strong>. Debe realizarse de manera minuciosa el análisis de cada parámetro y sus interacciones, además de definir qué se quiere optimizar y qué limitaciones se tienen.</li>
+<li><strong>Definición de variables</strong>. Deben definirse las variables de acuerdo al tipo de problema y a lo que se quiere optimizar.</li>
+<li><strong>Establecer la función objetivo</strong>. Aquí se define qué es lo que se quiere optimizar, de acuerdo a su naturaleza. Por ejemplo, si estamos hablando de entradas benéficas (como ingresos de dinero o utilidades) se maximizará la función objetivo. Por lo contrario, si hablamos de costos, pretenderemos minimizar la función. Cada variable definida debe tener un coeficiente.</li>
+<li><strong>Determinar las restricciones</strong>. Ya definidas las variables y la función objetivo, se continúa con la formulación de las restricciones. Cabe mencionar que ya debieron haberse determinado todas los recursos limitados con los que debemos trabajar. Cada recurso que tenga esta naturaleza representa una restricción. Igual que en la función objetivo, cada variable debe tener un coeficiente.</li>
+<li><strong>Solución del modelo matemático</strong>. La función objetivo y las restricciones son los componentes del modelo matemático. Este puede resolverse utilizando un conjunto de métodos, dependiendo de nuevo, de la naturaleza del modelo.</li>
+<li><strong>Prueba del modelo</strong>. Debe evaluarse la calidad del resultado en el modelo, comprobando que las restricciones se cumplan.</li>
+<li><strong>Implantación del modelo</strong>. Debe implementarse la solución en la práctica.</li>
+<li><strong>Retroalimentación</strong>. Las soluciones óptimas obtenidas mediante el modelo pueden resultar lo ideal para el proceso que se analiza. Sin embargo, en la realidad existen muchos factores que pueden causar que no funcionen. Por ello se debe estar atento a cualquier cambio en el proceso y tomar las medidas pertinentes que no alteren el sistema.</li>
+</ol>
+</div>
+<div id="suposiciones-de-la-programacion-lineal" class="section level2">
+<h2>Suposiciones de la programación lineal</h2>
+<ul>
+<li>Proporcionalidad</li>
+<li>Aditividad</li>
+<li>Divisibilidad</li>
+<li>Certidumbre</li>
+</ul>
+</div>
 
 
 
