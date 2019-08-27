@@ -321,8 +321,115 @@ $(document).ready(function () {
 </div>
 
 
-<pre class="mermaid"><code>graph LR
-A --&gt; B</code></pre>
+<ul>
+<li>Los proyectos modernos, en rangos que van desde construir un centro comercial suburbano hasta poner un hombre en la luna, son extremadamente grandes, complejos y costosos.</li>
+<li>No es tarea fácil terminar dichos proyectos a tiempo y dentro del presupuesto.</li>
+<li>Los complicados problemas para programar dichos proyectos a menudo quedan estructurados debido a la interdependencia de las actividades.</li>
+<li>No es posible iniciar ciertas actividades antes de que otras hayan sido terminadas. Al tratar con proyectos que con toda posibilidad involucran miles de dichas relaciones de dependencia, no es sorprendente que los administradores busquen métodos de análisis efectivos.</li>
+</ul>
+<div id="preguntas-clave" class="section level2">
+<h2>Preguntas clave</h2>
+<ol style="list-style-type: decimal">
+<li>¿Cuál es la fecha esperada de terminación del proyecto?</li>
+<li>¿Cuál es la “variabilidad” potencial de esta fecha?</li>
+<li>¿Cuáles son las fechas de inicio y terminación programadas para cada actividad específica?</li>
+<li>¿Qué actividades son críticas, en el sentido de que deben ser terminadas exactamente como fueron programadas, a fin de cumplir el objetivo de terminación general del proyecto?</li>
+<li>¿Cuánto tiempo pueden retrasarse las actividades no críticas, antes de que se incurra en un retraso en la fecha de terminación general?</li>
+<li>¿Cómo pueden concentrarse más eficientemente los recursos en actividades, a fin de acelerar la terminación del proyecto?</li>
+<li>¿Qué control se debe ejercer en el flujo de gastos para las diversas actividades a lo largo del proyecto, a fin de que el presupuesto general se pueda cumplir?</li>
+</ol>
+<p><strong>PERT</strong> y <strong>CPM</strong>, siglas de <em>Program Evaluation Review Technique</em> (Técnica de revisión y evaluación de programas) y <em>Critical Path Method</em> (Método de la ruta crítica), respectivamente, darán las respuestas a estas preguntas. Cada uno de estos métodos de programación representa un proyecto como una red, que iremos construyendo conforme avancemos.</p>
+<p>Es importante aclarar que CPM es un método aplicable solo cuando conocemos con certeza la duración de las actividades que se ejecutarán. Por el otro lado, PERT es el que se usa cuando tenemos tiempos probables de ejecución. Esto define a CPM como un método determinista y a PERT como probabilístico.</p>
+</div>
+<div id="ejemplo-de-una-red-cpm" class="section level2">
+<h2>Ejemplo de una red CPM</h2>
+<p>Veamos a continuación un proyecto que cuenta con actividades cuyos tiempos de ejecución son conocidos.</p>
+<p><em>El traslado inminente de la operación de las tarjetas de crédito hacia otra ciudad, desde la actual oficina central, es un proyecto importante para una compañía bancaria. La mesa directiva ha establecido como fecha límite 22 semanas para que el traslado esté terminado. Usted está a cargo de planear el traslado, de verificar que todo resulte de acuerdo con el plan y de asegurarse de que el plazo fijado se cumpla.</em> <em>El traslado es difícil de coordinar porque involucra muchas divisiones diferentes de la compañía. “Bienes raíces” tiene que seleccionar uno de tres sitios posibles para las oficinas. “Personal” tiene que determinar qué empleados se mudarán, cuántos nuevos empleados se contratarán y quién los va a capacitar. El grupo de sistemas y la oficina del tesorero deben organizar y poner en práctica los procedimientos de operación y los arreglos financieros para la nueva operación. Los arquitectos tendrán que diseñar el espacio interior y supervisar las mejoras estructurales que se necesiten. Cada uno de los sitios que se están considerando es un edificio existente, con la cantidad apropiada de espacio libre. Sin embargo, se deberán adquirir las divisiones entre oficinas, las instalaciones de computadoras, los muebles, y así sucesivamente.</em> <em>Un segundo factor de complicación es que existe interdependencia entre las actividades. En otras palabras, algunas partes del proyecto no pueden iniciarse hasta que otras estén terminadas. Considere dos ejemplos obvios: no puede montar el interior de una oficina antes de que ésta sea diseñada. Tampoco puede contratar nuevos empleados hasta que haya determinado cuáles son los requerimientos de personal.</em></p>
+<p>__El primer paso en el proceso es definir las actividades del proyecto y establecer las relaciones de precedencia apropiadas. Éste es un primer paso importante, ya que errores u omisiones en esta etapa pueden llevar a una programación desastrosamente imprecisa. En la tabla siguiente se muestra la primera lista de actividades que se prepara para el traslado (las columnas llamadas “Tiempo” y “Recursos” son indicadores de elementos por considerar). Ésta es la parte más importante de cualquier proyecto PERT o CPM y usualmente se lleva a cabo involucrando a varias personas, de forma que no se pasen por alto actividades importantes. Todo el trabajo debe ser un esfuerzo de equipo, no un esfuerzo individual.</p>
+<table>
+<thead>
+<tr class="header">
+<th>ACTIVIDAD</th>
+<th>DESCRIPCIÓN</th>
+<th>PREDECESORES</th>
+<th>TIEMPO</th>
+<th>RECURSOS</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>A</td>
+<td>Seleccionar sitio de oficinas</td>
+<td>-</td>
+<td>3</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>B</td>
+<td>Crear plan organizacional y financiero</td>
+<td>-</td>
+<td>5</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>C</td>
+<td>Determinar requerimientos de personal</td>
+<td>B</td>
+<td>3</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>D</td>
+<td>Diseñar la instalación</td>
+<td>A, C</td>
+<td>4</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>E</td>
+<td>Construir el interior</td>
+<td>D</td>
+<td>8</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>F</td>
+<td>Seleccionar al personal que se va a transferir</td>
+<td>C</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>G</td>
+<td>Contratar nuevos empleados</td>
+<td>F</td>
+<td>4</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>H</td>
+<td>Trasladar registros, personal clave, etc</td>
+<td>F</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>I</td>
+<td>Hacer arreglos financieros con otras instituciones</td>
+<td>B</td>
+<td>5</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>J</td>
+<td>Capacitar nuevo personal</td>
+<td>H, E, G</td>
+<td>3</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
 
 
 

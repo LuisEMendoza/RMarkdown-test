@@ -2,7 +2,47 @@
 title: "CPM"
 ---
 
-```mermaid
-graph LR
-A --> B
-```
+- Los proyectos modernos, en rangos que van desde construir un centro comercial suburbano hasta poner un hombre en la luna, son extremadamente grandes, complejos y costosos. 
+- No es tarea fácil terminar dichos proyectos a tiempo y dentro del presupuesto. 
+- Los complicados problemas para programar dichos proyectos a menudo quedan estructurados debido a la interdependencia de las actividades. 
+- No es posible iniciar ciertas actividades antes de que otras hayan sido terminadas. Al tratar con proyectos que con toda posibilidad involucran miles de dichas relaciones de dependencia, no es sorprendente que los administradores busquen métodos de análisis efectivos.
+
+## Preguntas clave
+1. ¿Cuál es la fecha esperada de terminación del proyecto?
+2. ¿Cuál es la “variabilidad” potencial de esta fecha?
+3. ¿Cuáles son las fechas de inicio y terminación programadas para cada actividad específica?
+4. ¿Qué actividades son críticas, en el sentido de que deben ser terminadas exactamente como fueron programadas, a fin de cumplir el objetivo de terminación general del proyecto?
+5. ¿Cuánto tiempo pueden retrasarse las actividades no críticas, antes de que se incurra en un retraso en la fecha de terminación general?
+6. ¿Cómo pueden concentrarse más eficientemente los recursos en actividades, a fin de acelerar la terminación del proyecto?
+7. ¿Qué control se debe ejercer en el flujo de gastos para las diversas actividades a lo largo del proyecto, a fin de que el presupuesto general se pueda cumplir?
+
+__PERT__ y __CPM__, siglas de _Program Evaluation Review Technique_ (Técnica de revisión y evaluación de programas) y _Critical Path Method_ (Método de la ruta crítica), respectivamente, darán las respuestas a estas preguntas. Cada uno de estos métodos de programación representa un proyecto como una red, que iremos construyendo conforme avancemos.
+
+Es importante aclarar que CPM es un método aplicable solo cuando conocemos con certeza la duración de las actividades que se ejecutarán. Por el otro lado, PERT es el que se usa cuando tenemos tiempos probables de ejecución. Esto define a CPM como un método determinista y a PERT como probabilístico.
+
+## Ejemplo de una red CPM
+Veamos a continuación un proyecto que cuenta con actividades cuyos tiempos de ejecución son conocidos.
+
+_El traslado inminente de la operación de las tarjetas de crédito hacia otra ciudad, desde la actual oficina central, es un proyecto importante para una compañía bancaria. La mesa directiva ha establecido como fecha límite 22 semanas para que el traslado esté terminado. Usted está a cargo de planear el traslado, de verificar que todo resulte de acuerdo con el plan y de asegurarse de que el plazo fijado se cumpla._
+_El traslado es difícil de coordinar porque involucra muchas divisiones diferentes de la compañía. “Bienes raíces” tiene que seleccionar uno de tres sitios posibles para las oficinas. “Personal” tiene que determinar qué empleados se mudarán, cuántos nuevos empleados se contratarán y quién los va a capacitar. El grupo de sistemas y la oficina del tesorero deben organizar y poner en práctica los procedimientos de operación y los arreglos financieros para la nueva operación. Los arquitectos tendrán que diseñar el espacio interior y supervisar las mejoras estructurales que se necesiten. Cada uno de los sitios que se están considerando es un edificio existente, con la cantidad apropiada de espacio libre. Sin embargo, se deberán adquirir las divisiones entre oficinas, las instalaciones de computadoras, los muebles, y así sucesivamente._
+_Un segundo factor de complicación es que existe interdependencia entre las actividades. En otras palabras, algunas partes del proyecto no pueden iniciarse hasta que otras estén terminadas. Considere dos ejemplos obvios: no puede montar el interior de una oficina antes de que ésta sea diseñada. Tampoco puede contratar nuevos empleados hasta que haya determinado cuáles son los requerimientos de personal._
+
+__El primer paso en el proceso es definir las actividades del proyecto y establecer las relaciones de precedencia apropiadas. Éste es un primer paso importante, ya que errores u omisiones en esta etapa pueden llevar a una programación desastrosamente imprecisa.
+En la tabla siguiente se muestra la primera lista de actividades que se prepara para el traslado (las columnas llamadas “Tiempo” y “Recursos” son indicadores de elementos por considerar). Ésta es la parte más importante de cualquier proyecto PERT o CPM y usualmente se lleva a cabo involucrando a varias personas, de forma que no se pasen por alto actividades importantes. Todo el trabajo debe ser un esfuerzo de equipo, no un esfuerzo individual.
+
+ACTIVIDAD | DESCRIPCIÓN | PREDECESORES | TIEMPO | RECURSOS
+--- | --- | --- | --- | ---
+A | Seleccionar sitio de oficinas | - | 3 |
+B | Crear plan organizacional y financiero | -  | 5  |
+C | Determinar requerimientos de personal | B | 3  |
+D | Diseñar la instalación |  A, C | 4 |
+E | Construir el interior | D | 8 |
+F | Seleccionar al personal que se va a transferir | C  | 2 |
+G | Contratar nuevos empleados |F  |  4 |
+H | Trasladar registros, personal clave, etc |F  | 2|
+I | Hacer arreglos financieros con otras instituciones |B  |  5|
+J | Capacitar nuevo personal |H, E, G  |3  |
+
+
+
+
