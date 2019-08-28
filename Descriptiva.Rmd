@@ -182,10 +182,28 @@ kscott <- (2*n)^(1/3)
 kscott
 ```
 
-Podríamos graficar el histograma directamente, pero queremos obtener la distribución de frecuencias también. Para ello, ejecutamos la función `hist` pero con la opción de no mostrarlo.
+Con el número de  clases ya definido, lo siguiente en realizar será determinar la anchura o límites de la clase. Igual que en el número de clases, no existe una regla infalible para hacerlo, y muchas veces puede dejarse a criterio de la persona que realiza el análisis. Se pueden mencionar dos pautas:
+
+__Al tanteo__. En este caso obtenemos el número más bajo y el más alto y buscamos unos límites que nos permitan englobar dichos números sin que quepa la posibilidad de dejar algún valor fuera. Por ejemplo, el número más bajo (o mínimo) es $2.97$, por lo cual podríamos definir $2.5$ o incluso $2$ como límite inferior de la primera clase; en el otro extremo, el valor máximo es $18.26$, por lo que podremos dejar $18.5$, $19$ o incluso $20$ como límite superior. Cabe mencionar que el $20$ sería para asegurarnos de tener clases «simétricas».
+
+__Por fórmula__. En este caso, prescindimos de estar buscando un número adecuado y lo calculamos directamente con la siguiente expresión:
+
+$$
+Anchura=\frac {R}{NC}
+$$
+Donde $R$ es el rango (esto es, la diferencia entre el valor máximo y el mínimo) y $NC$ es el número de clases. Supongamos que queremos 9 clases, entonces:
 
 ```{r}
-df <- hist(Consumo, nclass = 6, plot = FALSE, right = FALSE)
+anchura <- (max(Consumo)-min(Consumo))/9
+anchura
+```
+
+Al ser un valor decimal, se recomienda redondearse hacia arriba, quedando en dos. Así que nuestras clases comenzarían en 2 como límite inferior, y aumentarán de dos en dos hasta alcanzar el límite superior: 20.
+
+Podríamos graficar el histograma directamente, pero queremos obtener la distribución de frecuencias también. Para ello, ejecutamos la función `hist` pero con la opción de no mostrarlo y con el número de clases que hayamos definido.
+
+```{r}
+df <- hist(Consumo, nclass = 9, plot = FALSE, right = FALSE)
 df
 ```
 
