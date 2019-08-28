@@ -679,12 +679,15 @@ Consumo</code></pre>
 ## [78] 13.38 13.42 13.43 13.47 13.60 13.96 14.24 14.35 15.12 15.24 16.06
 ## [89] 16.90 18.26</code></pre>
 <p>Es notorio que los valores son bastantes y que rara vez se repiten. Cuando nuestros datos son así, se recomienda agruparlos en una distribución de frecuencias. Dicha distribución divide los datos en intervalos y cuenta las ocasiones en que los mismos datos se encuentran entre estos intervalos. A estos últimos se les conoce también como <strong>clases</strong>.</p>
-<p>El primer paso es determinar el número de datos. En esta ocasión ya lo sabemos, son 90. Entonces toca definir el número de clases. No existe una regla inamovible para hacer esto, pero usualmente se utiliza uno de los tres criterios siguientes:</p>
+<p>El primer paso es determinar el número de datos. En esta ocasión ya lo sabemos, son 90. Si en un momento dado no fuera así, podemos contarlos con el siguiente comando:</p>
+<pre class="r"><code>n &lt;- length(Consumo)
+n</code></pre>
+<pre><code>## [1] 90</code></pre>
+<p>Entonces toca definir el número de clases. No existe una regla inamovible para hacer esto, pero usualmente se utiliza uno de los tres criterios siguientes:</p>
 <p><strong>La raíz cuadrada del número de datos</strong>. Al momento de contar el total de observaciones, se calcula la raíz de dicho valor. <span class="math display">\[
 total\ de\ clases \ \approx \sqrt {total\ de\ observaciones}
 \]</span></p>
-<pre class="r"><code>n &lt;- 90
-sqrt(n)</code></pre>
+<pre class="r"><code>sqrt(n)</code></pre>
 <pre><code>## [1] 9.486833</code></pre>
 <p>Redondeamos hacia arriba y definimos el número de clases como diez.</p>
 <p><strong>La Regla de Sturges</strong>. Fue propuesta en 1926 y es la que utilizan en su mayoría los programas estadísticos para el cálculo y elaboración de histogramas y distribuciones de frecuencia. Su fórmula es:</p>
@@ -752,7 +755,7 @@ tabla</code></pre>
 ## 9 [18,20)    1</code></pre>
 <p>El histograma quedaría así:</p>
 <pre class="r"><code>hist(Consumo)</code></pre>
-<p><img src="Descriptiva_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+<p><img src="Descriptiva_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
 </div>
 </div>
 <div id="medidas-de-tendencia" class="section level2">

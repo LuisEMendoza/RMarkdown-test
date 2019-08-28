@@ -147,14 +147,19 @@ Consumo
 
 Es notorio que los valores son bastantes y que rara vez se repiten. Cuando nuestros datos son así, se recomienda agruparlos en una distribución de frecuencias. Dicha distribución divide los datos en intervalos y cuenta las ocasiones en que los mismos datos se encuentran entre estos intervalos. A estos últimos se les conoce también como __clases__. 
 
-El primer paso es determinar el número de datos. En esta ocasión ya lo sabemos, son 90. Entonces toca definir el número de clases. No existe una regla inamovible para hacer esto, pero usualmente se utiliza uno de los tres criterios siguientes:
+El primer paso es determinar el número de datos. En esta ocasión ya lo sabemos, son 90. Si en un momento dado no fuera así, podemos contarlos con el siguiente comando:
+```{r}
+n <- length(Consumo)
+n
+```
+
+Entonces toca definir el número de clases. No existe una regla inamovible para hacer esto, pero usualmente se utiliza uno de los tres criterios siguientes:
 
 __La raíz cuadrada del número de datos__. Al momento de contar el total de observaciones, se calcula la raíz de dicho valor.
 $$
 total\ de\ clases \ \approx \sqrt {total\ de\ observaciones}
 $$
 ```{r}
-n <- 90
 sqrt(n)
 ```
 Redondeamos hacia arriba y definimos el número de clases como diez.
