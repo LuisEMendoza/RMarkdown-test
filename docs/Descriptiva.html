@@ -539,21 +539,136 @@ marca</code></pre>
 ## [22] Huawei   Motorola Samsung  Samsung  Apple    Samsung  LG      
 ## [29] Apple    Samsung  Motorola Huawei  
 ## Levels: Apple HTC Huawei LG Motorola Nokia Samsung Xiaomi</code></pre>
-<p>Enseguida creamos la tabla:</p>
+<p>Construir una tabla de frecuencias implica contar el número de veces que una etiqueta se repite. A esa cantidad se le conoce como la frecuencia absoluta. Enseguida creamos la tabla:</p>
 <pre class="r"><code>mar &lt;- table(marca)
 mar</code></pre>
 <pre><code>## marca
 ##    Apple      HTC   Huawei       LG Motorola    Nokia  Samsung   Xiaomi 
 ##        8        1        4        1        5        2       10        1</code></pre>
+<p>De aquí en delante podemos complementar la tabla de frecuencias agregando la frecuencia acumulada y la relativa. Llenémosla:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Marca</th>
+<th align="center">Frecuencia</th>
+<th align="center">Frec. acumulada</th>
+<th align="center">Frec. relativa</th>
+<th align="center">Frec. rel. acumulada</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Apple</td>
+<td align="center">8</td>
+<td align="center">8</td>
+<td align="center">0.25</td>
+<td align="center">0.25</td>
+</tr>
+<tr class="even">
+<td align="left">HTC</td>
+<td align="center">1</td>
+<td align="center">9</td>
+<td align="center">0.03125</td>
+<td align="center">0.28125</td>
+</tr>
+<tr class="odd">
+<td align="left">Huawei</td>
+<td align="center">4</td>
+<td align="center">13</td>
+<td align="center">0.125</td>
+<td align="center">0.40625</td>
+</tr>
+<tr class="even">
+<td align="left">LG</td>
+<td align="center">1</td>
+<td align="center">14</td>
+<td align="center">0.03125</td>
+<td align="center">0.4375</td>
+</tr>
+<tr class="odd">
+<td align="left">Motorola</td>
+<td align="center">5</td>
+<td align="center">19</td>
+<td align="center">0.15625</td>
+<td align="center">0.59375</td>
+</tr>
+<tr class="even">
+<td align="left">Nokia</td>
+<td align="center">2</td>
+<td align="center">21</td>
+<td align="center">0.0625</td>
+<td align="center">0.65625</td>
+</tr>
+<tr class="odd">
+<td align="left">Samsung</td>
+<td align="center">10</td>
+<td align="center">31</td>
+<td align="center">0.3125</td>
+<td align="center">0.96875</td>
+</tr>
+<tr class="even">
+<td align="left">Xiaomi</td>
+<td align="center">1</td>
+<td align="center">32</td>
+<td align="center">0.03125</td>
+<td align="center">1</td>
+</tr>
+</tbody>
+</table>
+<p>La frecuencia acumulada, también conocida como frecuencia absoluta acumulada, se corresponde con la suma de las frecuencias que han aparecido hasta el momento. Por ejemplo, la frecuencia acumulada para Huawei es de 13, que se corresponde con los 8 de Apple, la única de HTC y las 4 unidades de la propia Huawei. La frecuencia relativa es el cociente de la frecuencia absoluta entre el total de observaciones, por ejemplo, para Apple se corresponde con el resultado de dividir sus 8 unidades entre el total, que fueron 32. Esos cocientes se acumulan para obtener la frecuencia relativa acumulada.</p>
+<p>Ahora bien, la única ocasión en la que se recomienda utilizar un diagrama de sectores -también conocido como de pastel-, es cuando se trabaja con variables nominales (etiquetas o categorías). Para su construcción, basta con tomar la frecuencia relativa de cada categoría y multiplicarla por 360, que son la totalidad de los grados contenidos en un círculo completo.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Marca</th>
+<th align="center">Grados</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Apple</td>
+<td align="center">90</td>
+</tr>
+<tr class="even">
+<td align="left">HTC</td>
+<td align="center">11.25</td>
+</tr>
+<tr class="odd">
+<td align="left">Huawei</td>
+<td align="center">45</td>
+</tr>
+<tr class="even">
+<td align="left">LG</td>
+<td align="center">11.25</td>
+</tr>
+<tr class="odd">
+<td align="left">Motorola</td>
+<td align="center">56.25</td>
+</tr>
+<tr class="even">
+<td align="left">Nokia</td>
+<td align="center">22.5</td>
+</tr>
+<tr class="odd">
+<td align="left">Samsung</td>
+<td align="center">112.5</td>
+</tr>
+<tr class="even">
+<td align="left">Xiaomi</td>
+<td align="center">11.25</td>
+</tr>
+</tbody>
+</table>
+<p>El círculo se divide en las 8 secciones con magnitudes en grados ya calculadas. El diagrama quedaría de la siguiente manera (elaborada con R):</p>
 <pre class="r"><code>pie(mar)</code></pre>
 <p><img src="Descriptiva_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
 </div>
 <div id="distribuciones-de-frecuencia" class="section level3">
 <h3>Distribuciones de frecuencia</h3>
 <p>En ocasiones es necesario trabajar con valores que no se repiten tanto, como en el caso que se presenta enseguida.</p>
-<p>Las compañías eléctricas requieren información sobre el consumo de los clientes para obtener pronósticos precisos de demandas. Investigadores de Wisconsin Power and Light determinaron el consumo de energía (BTU) durante un periodo particular con una muestra de 90 hogares calentados con gas. Se calculó un valor de consumo promedio como sigue:</p>
-<pre class="r"><code>consumo &lt;- scan(&quot;datasets/004-horno.txt&quot;)
-consumo</code></pre>
+<p>Las compañías eléctricas requieren información sobre el consumo de los clientes para obtener pronósticos precisos de demandas. Investigadores de Wisconsin Power and Light determinaron el consumo de energía (BTU) durante un periodo particular con una muestra de 90 hogares calentados con gas. Las siguientes observaciones son el consumo promedio:</p>
+<pre class="r"><code>Consumo &lt;- scan(&quot;datasets/004-horno.txt&quot;)
+Consumo</code></pre>
 <pre><code>##  [1]  2.97  4.00  5.20  5.56  5.94  5.98  6.35  6.62  6.72  6.78  6.80
 ## [12]  6.85  6.94  7.15  7.16  7.23  7.29  7.62  7.62  7.69  7.73  7.87
 ## [23]  7.93  8.00  8.26  8.29  8.37  8.47  8.54  8.58  8.61  8.67  8.69
@@ -563,24 +678,47 @@ consumo</code></pre>
 ## [67] 11.70 12.16 12.19 12.28 12.31 12.62 12.69 12.71 12.91 12.92 13.11
 ## [78] 13.38 13.42 13.43 13.47 13.60 13.96 14.24 14.35 15.12 15.24 16.06
 ## [89] 16.90 18.26</code></pre>
+<p>Es notorio que los valores son bastantes y que rara vez se repiten. Cuando nuestros datos son así, se recomienda agruparlos en una distribución de frecuencias. Dicha distribución divide los datos en intervalos y cuenta las ocasiones en que los mismos datos se encuentran entre estos intervalos. A estos últimos se les conoce también como <strong>clases</strong>.</p>
+<p>El primer paso es determinar el número de datos. En esta ocasión ya lo sabemos, son 90. Entonces toca definir el número de clases. No existe una regla inamovible para hacer esto, pero usualmente se utiliza uno de los tres criterios siguientes:</p>
+<p><strong>La raíz cuadrada del número de datos</strong>. Al momento de contar el total de observaciones, se calcula la raíz de dicho valor. <span class="math display">\[
+total\ de\ clases \ \approx \sqrt {total\ de\ observaciones}
+\]</span></p>
+<pre class="r"><code>n &lt;- 90
+sqrt(n)</code></pre>
+<pre><code>## [1] 9.486833</code></pre>
+<p>Redondeamos hacia arriba y definimos el número de clases como diez.</p>
+<p><strong>La Regla de Sturges</strong>. Fue propuesta en 1926 y es la que utilizan en su mayoría los programas estadísticos para el cálculo y elaboración de histogramas y distribuciones de frecuencia. Su fórmula es:</p>
+<p><span class="math display">\[
+k=1+log_2(n)
+\]</span> Donde <span class="math inline">\(k\)</span> es el número de clases y <span class="math inline">\(n\)</span> es el tamaño de muestra. Para este caso, el número de clases sería:</p>
+<pre class="r"><code>ksturges &lt;- 1+log2(n)
+ksturges</code></pre>
+<pre><code>## [1] 7.491853</code></pre>
+<p><strong>La regla de Scott</strong>. Propuesta en 1992, utiliza la distribución normal como base y recomienda utilizar la expresión:</p>
+<p><span class="math display">\[
+k=(2n)^{1/3}
+\]</span></p>
+<pre class="r"><code>kscott &lt;- (2*n)^(1/3)
+kscott</code></pre>
+<pre><code>## [1] 5.646216</code></pre>
 <p>Podríamos graficar el histograma directamente, pero queremos obtener la distribución de frecuencias también. Para ello, ejecutamos la función <code>hist</code> pero con la opción de no mostrarlo.</p>
-<pre class="r"><code>df &lt;- hist(consumo, breaks = &#39;Sturges&#39;, plot = FALSE)
+<pre class="r"><code>df &lt;- hist(Consumo, nclass = 6, plot = FALSE, right = FALSE)
 df</code></pre>
 <pre><code>## $breaks
 ##  [1]  2  4  6  8 10 12 14 16 18 20
 ## 
 ## $counts
-## [1]  2  4 18 23 20 16  4  2  1
+## [1]  1  5 17 24 20 16  4  2  1
 ## 
 ## $density
-## [1] 0.011111111 0.022222222 0.100000000 0.127777778 0.111111111 0.088888889
+## [1] 0.005555556 0.027777778 0.094444444 0.133333333 0.111111111 0.088888889
 ## [7] 0.022222222 0.011111111 0.005555556
 ## 
 ## $mids
 ## [1]  3  5  7  9 11 13 15 17 19
 ## 
 ## $xname
-## [1] &quot;consumo&quot;
+## [1] &quot;Consumo&quot;
 ## 
 ## $equidist
 ## [1] TRUE
@@ -588,7 +726,7 @@ df</code></pre>
 ## attr(,&quot;class&quot;)
 ## [1] &quot;histogram&quot;</code></pre>
 <pre class="r"><code>intervalos &lt;- df$breaks
-clases &lt;- cut(consumo, breaks = intervalos, dig.lab = 2, right = FALSE)
+clases &lt;- cut(Consumo, breaks = intervalos, dig.lab = 2, right = FALSE)
 tabla.frec &lt;- table(clases)
 tabla &lt;- as.data.frame(tabla.frec)
 tabla</code></pre>
@@ -603,9 +741,25 @@ tabla</code></pre>
 ## 8 [16,18)    2
 ## 9 [18,20)    1</code></pre>
 <p>El histograma quedaría así:</p>
-<pre class="r"><code>hist(consumo)</code></pre>
-<p><img src="Descriptiva_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<pre class="r"><code>hist(Consumo)</code></pre>
+<p><img src="Descriptiva_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
 </div>
+</div>
+<div id="medidas-de-tendencia" class="section level2">
+<h2>Medidas de tendencia</h2>
+<pre class="r"><code>m &lt;- scan(&quot;datasets/004-horno.txt&quot;)
+m</code></pre>
+<pre><code>##  [1]  2.97  4.00  5.20  5.56  5.94  5.98  6.35  6.62  6.72  6.78  6.80
+## [12]  6.85  6.94  7.15  7.16  7.23  7.29  7.62  7.62  7.69  7.73  7.87
+## [23]  7.93  8.00  8.26  8.29  8.37  8.47  8.54  8.58  8.61  8.67  8.69
+## [34]  8.81  9.07  9.27  9.37  9.43  9.52  9.58  9.60  9.76  9.82  9.83
+## [45]  9.83  9.84  9.96 10.04 10.21 10.28 10.28 10.30 10.35 10.36 10.40
+## [56] 10.49 10.50 10.64 10.95 11.09 11.12 11.21 11.29 11.43 11.62 11.70
+## [67] 11.70 12.16 12.19 12.28 12.31 12.62 12.69 12.71 12.91 12.92 13.11
+## [78] 13.38 13.42 13.43 13.47 13.60 13.96 14.24 14.35 15.12 15.24 16.06
+## [89] 16.90 18.26</code></pre>
+<pre class="r"><code>mean(m)</code></pre>
+<pre><code>## [1] 10.03844</code></pre>
 </div>
 
 

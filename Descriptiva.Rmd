@@ -94,13 +94,42 @@ Vamos a trabajar ahora con datos categóricos. Cuando hablamos de categorías, h
 marca <- c(read.table("datasets/003-marca.txt"))
 marca
 ```
+Construir una tabla de frecuencias implica contar el número de veces que una etiqueta se repite. A esa cantidad se le conoce como la frecuencia absoluta. Enseguida creamos la tabla:
 
-Enseguida creamos la tabla:
 ```{r}
 mar <- table(marca)
 mar
 ```
 
+De aquí en delante podemos complementar la tabla de frecuencias agregando la frecuencia acumulada y la relativa. Llenémosla:
+
+Marca | Frecuencia | Frec. acumulada | Frec. relativa | Frec. rel. acumulada
+:---|:---:|:---:|:---:|:---:
+Apple | 8 | 8 | 0.25 | 0.25
+HTC | 1 | 9 | 0.03125 | 0.28125
+Huawei | 4 | 13 | 0.125 | 0.40625
+LG | 1 | 14 | 0.03125 | 0.4375
+Motorola | 5 | 19 | 0.15625 | 0.59375
+Nokia | 2 | 21 | 0.0625 | 0.65625
+Samsung | 10 | 31 | 0.3125 | 0.96875
+Xiaomi | 1 | 32 | 0.03125 | 1
+
+La frecuencia acumulada, también conocida como frecuencia absoluta acumulada, se corresponde con la suma de las frecuencias que han aparecido hasta el momento. Por ejemplo, la frecuencia acumulada para Huawei es de 13, que se corresponde con los 8 de Apple, la única de HTC y las 4 unidades de la propia Huawei. La frecuencia relativa es el cociente de la frecuencia absoluta entre el total de observaciones, por ejemplo, para Apple se corresponde con el resultado de dividir sus 8 unidades entre el total, que fueron 32. Esos cocientes se acumulan para obtener la frecuencia relativa acumulada.
+
+Ahora bien, la única ocasión en la que se recomienda utilizar un diagrama de sectores -también conocido como de pastel-, es cuando se trabaja con variables nominales (etiquetas o categorías). Para su construcción, basta con tomar la frecuencia relativa de cada categoría y multiplicarla por 360, que son la totalidad de los grados contenidos en un círculo completo.
+
+Marca | Grados
+:--- | :---:
+Apple | 90
+HTC | 11.25
+Huawei | 45
+LG | 11.25
+Motorola | 56.25
+Nokia | 22.5
+Samsung | 112.5
+Xiaomi | 11.25
+
+El círculo se divide en las 8 secciones con magnitudes en grados ya calculadas. El diagrama quedaría de la siguiente manera (elaborada con R):
 
 ```{r}
 pie(mar)
@@ -109,23 +138,60 @@ pie(mar)
 ### Distribuciones de frecuencia
 En ocasiones es necesario trabajar con valores que no se repiten tanto, como en el caso que se presenta enseguida.
 
-Las compañías eléctricas requieren información sobre el consumo de los clientes para obtener pronósticos precisos de demandas. Investigadores de Wisconsin Power and Light determinaron el consumo de energía (BTU) durante un periodo particular con una muestra de 90 hogares calentados con gas. Se calculó un valor de consumo promedio como sigue:
+Las compañías eléctricas requieren información sobre el consumo de los clientes para obtener pronósticos precisos de demandas. Investigadores de Wisconsin Power and Light determinaron el consumo de energía (BTU) durante un periodo particular con una muestra de 90 hogares calentados con gas. Las siguientes observaciones son el consumo promedio:
 
 ```{r}
-consumo <- scan("datasets/004-horno.txt")
-consumo
+Consumo <- scan("datasets/004-horno.txt")
+Consumo
+```
+
+Es notorio que los valores son bastantes y que rara vez se repiten. Cuando nuestros datos son así, se recomienda agruparlos en una distribución de frecuencias. Dicha distribución divide los datos en intervalos y cuenta las ocasiones en que los mismos datos se encuentran entre estos intervalos. A estos últimos se les conoce también como __clases__. 
+
+El primer paso es determinar el número de datos. En esta ocasión ya lo sabemos, son 90. Entonces toca definir el número de clases. No existe una regla inamovible para hacer esto, pero usualmente se utiliza uno de los tres criterios siguientes:
+
+__La raíz cuadrada del número de datos__. Al momento de contar el total de observaciones, se calcula la raíz de dicho valor.
+$$
+total\ de\ clases \ \approx \sqrt {total\ de\ observaciones}
+$$
+```{r}
+n <- 90
+sqrt(n)
+```
+Redondeamos hacia arriba y definimos el número de clases como diez.
+
+__La Regla de Sturges__. Fue propuesta en 1926 y es la que utilizan en su mayoría los programas estadísticos para el cálculo y elaboración de histogramas y distribuciones de frecuencia. Su fórmula es:
+
+$$
+k=1+log_2(n)
+$$
+Donde $k$ es el número de clases y $n$ es el tamaño de muestra. Para este caso, el número de clases sería:
+
+```{r}
+ksturges <- 1+log2(n)
+ksturges
+```
+
+__La regla de Scott__. Propuesta en 1992, utiliza la distribución normal como base y recomienda utilizar la expresión:
+
+$$
+k=(2n)^{1/3}
+$$
+
+```{r}
+kscott <- (2*n)^(1/3)
+kscott
 ```
 
 Podríamos graficar el histograma directamente, pero queremos obtener la distribución de frecuencias también. Para ello, ejecutamos la función `hist` pero con la opción de no mostrarlo.
 
 ```{r}
-df <- hist(consumo, breaks = 'Sturges', plot = FALSE)
+df <- hist(Consumo, nclass = 6, plot = FALSE, right = FALSE)
 df
 ```
 
 ```{r}
 intervalos <- df$breaks
-clases <- cut(consumo, breaks = intervalos, dig.lab = 2, right = FALSE)
+clases <- cut(Consumo, breaks = intervalos, dig.lab = 2, right = FALSE)
 tabla.frec <- table(clases)
 tabla <- as.data.frame(tabla.frec)
 tabla
@@ -134,7 +200,15 @@ tabla
 El histograma quedaría así:
 
 ```{r}
-hist(consumo)
+hist(Consumo)
 ```
 
+## Medidas de tendencia
+```{r}
+m <- scan("datasets/004-horno.txt")
+m
+```
 
+```{r}
+mean(m)
+```
