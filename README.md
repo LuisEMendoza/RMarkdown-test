@@ -1,2 +1,2 @@
 # RMarkdown-test
-Documentos elaborados en RMarkdown para aprender a configurar un repositorio en GitHub y para la impartición de clases.
+Material de apoyo para las asignaturas de Probabilidad y Estadística y Optimización.
