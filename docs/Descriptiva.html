@@ -701,8 +701,18 @@ k=(2n)^{1/3}
 <pre class="r"><code>kscott &lt;- (2*n)^(1/3)
 kscott</code></pre>
 <pre><code>## [1] 5.646216</code></pre>
-<p>Podríamos graficar el histograma directamente, pero queremos obtener la distribución de frecuencias también. Para ello, ejecutamos la función <code>hist</code> pero con la opción de no mostrarlo.</p>
-<pre class="r"><code>df &lt;- hist(Consumo, nclass = 6, plot = FALSE, right = FALSE)
+<p>Con el número de clases ya definido, lo siguiente en realizar será determinar la anchura o límites de la clase. Igual que en el número de clases, no existe una regla infalible para hacerlo, y muchas veces puede dejarse a criterio de la persona que realiza el análisis. Se pueden mencionar dos pautas:</p>
+<p><strong>Al tanteo</strong>. En este caso obtenemos el número más bajo y el más alto y buscamos unos límites que nos permitan englobar dichos números sin que quepa la posibilidad de dejar algún valor fuera. Por ejemplo, el número más bajo (o mínimo) es <span class="math inline">\(2.97\)</span>, por lo cual podríamos definir <span class="math inline">\(2.5\)</span> o incluso <span class="math inline">\(2\)</span> como límite inferior de la primera clase; en el otro extremo, el valor máximo es <span class="math inline">\(18.26\)</span>, por lo que podremos dejar <span class="math inline">\(18.5\)</span>, <span class="math inline">\(19\)</span> o incluso <span class="math inline">\(20\)</span> como límite superior. Cabe mencionar que el <span class="math inline">\(20\)</span> sería para asegurarnos de tener clases «simétricas».</p>
+<p><strong>Por fórmula</strong>. En este caso, prescindimos de estar buscando un número adecuado y lo calculamos directamente con la siguiente expresión:</p>
+<p><span class="math display">\[
+Anchura=\frac {R}{NC}
+\]</span> Donde <span class="math inline">\(R\)</span> es el rango (esto es, la diferencia entre el valor máximo y el mínimo) y <span class="math inline">\(NC\)</span> es el número de clases. Supongamos que queremos 9 clases, entonces:</p>
+<pre class="r"><code>anchura &lt;- (max(Consumo)-min(Consumo))/9
+anchura</code></pre>
+<pre><code>## [1] 1.698889</code></pre>
+<p>Al ser un valor decimal, se recomienda redondearse hacia arriba, quedando en dos. Así que nuestras clases comenzarían en 2 como límite inferior, y aumentarán de dos en dos hasta alcanzar el límite superior: 20.</p>
+<p>Podríamos graficar el histograma directamente, pero queremos obtener la distribución de frecuencias también. Para ello, ejecutamos la función <code>hist</code> pero con la opción de no mostrarlo y con el número de clases que hayamos definido.</p>
+<pre class="r"><code>df &lt;- hist(Consumo, nclass = 9, plot = FALSE, right = FALSE)
 df</code></pre>
 <pre><code>## $breaks
 ##  [1]  2  4  6  8 10 12 14 16 18 20
@@ -742,7 +752,7 @@ tabla</code></pre>
 ## 9 [18,20)    1</code></pre>
 <p>El histograma quedaría así:</p>
 <pre class="r"><code>hist(Consumo)</code></pre>
-<p><img src="Descriptiva_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<p><img src="Descriptiva_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
 </div>
 </div>
 <div id="medidas-de-tendencia" class="section level2">
