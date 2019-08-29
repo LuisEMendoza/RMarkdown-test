@@ -1,7 +1,72 @@
 ---
-title: "Planteamientos de modelos de programación lineal"
+title: "Planteamiento de modelos de programación lineal"
 ---
+
+Veamos otro ejemplo de problema del tipo _producción_. Sigue siendo un caso en el cual se tiene que encontrar la combinación de productos elaborados con recursos limitados que aumentan las utilidades para nuestra organización.
 
 ## Ejercicio 1
 Una compañía mueblera fabrica pupitres, sillas y mesas, para las cuales ha establecido que aportan una contribución a las utilidades de $\$5,000$, $\$6,000$ y $\$3,000$ por unidad, respectivamente. Para la producción de dichos artículos se cuenta con una disponibilidad semanal de 150 metros de madera, 120 metros de tubo y 200 horas-hombre de trabajo. Plantee el modelo matemático de programación lineal si sabe que para producir un pupitre necesita 5 metros de madera, 3 de tubo y 4 horas; para la silla requiere 3 metros de madera, 4 de tubo y 5 horas; y para la mesa se utilizan 2 metros de madera, 3 de tubo y una hora de trabajo.
+
+### Solución
+Debemos organizar la información de manera que resulte más clara. Para ello, generemos una tabla con la misma:
+
+Recurso | Pupitres | Sillas | Mesas | Disponibilidad
+:-------| :-------:|:------:|:-----:|:-------------:
+Madera  |5m|3m|2m|150 metros
+Tubo    |3m|4m|3m|120 metros
+Horas-Hombre|4h|5h|1h|200 horas
+Utilidad/unidad|$$5,000$|$$6,000$|$$3,000$
+Variables|$x_1$|$x_2$|$x_3$
+
+Cada producto es una variable. Así que cada una representa la cantidad de unidades a producir por semana.
+
+La función objetivo representará el deseo de la empresa de maximizar sus ganancias, así que quedará de la siguiente manera:
+
+$$
+max: Z=5000x_1+6000x_2+3000x_3
+$$
+
+Las limitaciones de los recursos deben representarse con restricciones, con una por cada materia prima:
+$$
+5x_1+3x_2+2x_3 \leq 150 \ metros\ de \ madera \\
+3x_1+4x_2+3x_3 \leq 120 \ metros\ de\ tubo \\
+4x_1+5x_2+x_3 \leq 200\ horas-hombre
+$$
+No olvidemos las restricciones de no negatividad:
+$$
+x_1,x_2,x_3 \geq 0
+$$
+
+Ahora bien, la mueblería acaba de imponer ciertas restricciones a la fabricación. Después de entablar comunicación con el departamento de Ventas, se ha concluído que se deberán producir un máximo de 20 pupitres y un mínimo de diez mesas. También indica que por cada tres mesas tienen que fabricarse trece sillas. ¿Cómo podría expresar la nueva política en su modelo matemático?
+
+Las tres restricciones adicionales pueden expresarse como sigue. En el caso de la primera, basta con indicar que la variable que corresponde a los pupitres ($x_1$) no debe ser mayor a 20. Quedaría así:
+$$
+x_1 \leq 20
+$$
+La segunda debe indicar que las mesas ($x_3$) deben ser al menos 10:
+$$
+x_3 \geq 10
+$$
+La tercera es un poco más compleja, pero puede construirse con un poco de lógica. Sabemos que cada tres mesas ($3x_2$) implican trece sillas ($13x_2$). Por lo tanto, las igualamos:
+$$
+13x_2=3x_3
+$$
+Esta es una buena oportunidad para mencionar que las expresiones que contiene un problema de programación lineal deben tener solo constantes en su lado derecho, tal como todas las que habíamos formulado, a excepción, precisamente de esta última. Así que, mediante un despeje, pasamos $3x_3$ al lado izquierdo. La restricción quedaría finalmente así:
+$$
+13x_2-3x_3=0
+$$
+
+El modelo completo quedaría entonces así:
+$$
+max: Z=5000x_1+6000x_2+3000x_3 \\
+\ \\
+sujeto\ a:\\
+5x_1+3x_2+2x_3 \leq 150  \\
+3x_1+4x_2+3x_3 \leq 120  \\
+4x_1+5x_2+x_3 \leq 200\\
+x_1 \leq 20\\
+x_3 \geq 10 \\
+13x_2-3x_3=0\\
+x_1,x_2,x_3 \geq 0
+$$
 

@@ -12,7 +12,7 @@
 
 
 
-<title>Planteamientos de modelos de programación lineal</title>
+<title>Planteamiento de modelos de programación lineal</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -316,14 +316,101 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Planteamientos de modelos de programación lineal</h1>
+<h1 class="title toc-ignore">Planteamiento de modelos de programación lineal</h1>
 
 </div>
 
 
+<p>Veamos otro ejemplo de problema del tipo <em>producción</em>. Sigue siendo un caso en el cual se tiene que encontrar la combinación de productos elaborados con recursos limitados que aumentan las utilidades para nuestra organización.</p>
 <div id="ejercicio-1" class="section level2">
 <h2>Ejercicio 1</h2>
 <p>Una compañía mueblera fabrica pupitres, sillas y mesas, para las cuales ha establecido que aportan una contribución a las utilidades de <span class="math inline">\(\$5,000\)</span>, <span class="math inline">\(\$6,000\)</span> y <span class="math inline">\(\$3,000\)</span> por unidad, respectivamente. Para la producción de dichos artículos se cuenta con una disponibilidad semanal de 150 metros de madera, 120 metros de tubo y 200 horas-hombre de trabajo. Plantee el modelo matemático de programación lineal si sabe que para producir un pupitre necesita 5 metros de madera, 3 de tubo y 4 horas; para la silla requiere 3 metros de madera, 4 de tubo y 5 horas; y para la mesa se utilizan 2 metros de madera, 3 de tubo y una hora de trabajo.</p>
+<div id="solucion" class="section level3">
+<h3>Solución</h3>
+<p>Debemos organizar la información de manera que resulte más clara. Para ello, generemos una tabla con la misma:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Recurso</th>
+<th align="center">Pupitres</th>
+<th align="center">Sillas</th>
+<th align="center">Mesas</th>
+<th align="center">Disponibilidad</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Madera</td>
+<td align="center">5m</td>
+<td align="center">3m</td>
+<td align="center">2m</td>
+<td align="center">150 metros</td>
+</tr>
+<tr class="even">
+<td align="left">Tubo</td>
+<td align="center">3m</td>
+<td align="center">4m</td>
+<td align="center">3m</td>
+<td align="center">120 metros</td>
+</tr>
+<tr class="odd">
+<td align="left">Horas-Hombre</td>
+<td align="center">4h</td>
+<td align="center">5h</td>
+<td align="center">1h</td>
+<td align="center">200 horas</td>
+</tr>
+<tr class="even">
+<td align="left">Utilidad/unidad</td>
+<td align="center"><span class="math display">\[5,000$|\]</span>6,000<span class="math inline">\(|\)</span><span class="math inline">\(3,000\)</span></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="left">Variables</td>
+<td align="center"><span class="math inline">\(x_1\)</span></td>
+<td align="center"><span class="math inline">\(x_2\)</span></td>
+<td align="center"><span class="math inline">\(x_3\)</span></td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+<p>Cada producto es una variable. Así que cada una representa la cantidad de unidades a producir por semana.</p>
+<p>La función objetivo representará el deseo de la empresa de maximizar sus ganancias, así que quedará de la siguiente manera:</p>
+<p><span class="math display">\[
+max: Z=5000x_1+6000x_2+3000x_3
+\]</span></p>
+<p>Las limitaciones de los recursos deben representarse con restricciones, con una por cada materia prima: <span class="math display">\[
+5x_1+3x_2+2x_3 \leq 150 \ metros\ de \ madera \\
+3x_1+4x_2+3x_3 \leq 120 \ metros\ de\ tubo \\
+4x_1+5x_2+x_3 \leq 200\ horas-hombre
+\]</span> No olvidemos las restricciones de no negatividad: <span class="math display">\[
+x_1,x_2,x_3 \geq 0
+\]</span></p>
+<p>Ahora bien, la mueblería acaba de imponer ciertas restricciones a la fabricación. Después de entablar comunicación con el departamento de Ventas, se ha concluído que se deberán producir un máximo de 20 pupitres y un mínimo de diez mesas. También indica que por cada tres mesas tienen que fabricarse trece sillas. ¿Cómo podría expresar la nueva política en su modelo matemático?</p>
+<p>Las tres restricciones adicionales pueden expresarse como sigue. En el caso de la primera, basta con indicar que la variable que corresponde a los pupitres (<span class="math inline">\(x_1\)</span>) no debe ser mayor a 20. Quedaría así: <span class="math display">\[
+x_1 \leq 20
+\]</span> La segunda debe indicar que las mesas (<span class="math inline">\(x_3\)</span>) deben ser al menos 10: <span class="math display">\[
+x_3 \geq 10
+\]</span> La tercera es un poco más compleja, pero puede construirse con un poco de lógica. Sabemos que cada tres mesas (<span class="math inline">\(3x_2\)</span>) implican trece sillas (<span class="math inline">\(13x_2\)</span>). Por lo tanto, las igualamos: <span class="math display">\[
+13x_2=3x_3
+\]</span> Esta es una buena oportunidad para mencionar que las expresiones que contiene un problema de programación lineal deben tener solo constantes en su lado derecho, tal como todas las que habíamos formulado, a excepción, precisamente de esta última. Así que, mediante un despeje, pasamos <span class="math inline">\(3x_3\)</span> al lado izquierdo. La restricción quedaría finalmente así: <span class="math display">\[
+13x_2-3x_3=0
+\]</span></p>
+<p>El modelo completo quedaría entonces así: <span class="math display">\[
+max: Z=5000x_1+6000x_2+3000x_3 \\
+\ \\
+sujeto\ a:\\
+5x_1+3x_2+2x_3 \leq 150  \\
+3x_1+4x_2+3x_3 \leq 120  \\
+4x_1+5x_2+x_3 \leq 200\\
+x_1 \leq 20\\
+x_3 \geq 10 \\
+13x_2-3x_3=0\\
+x_1,x_2,x_3 \geq 0
+\]</span></p>
+</div>
 </div>
 
 
