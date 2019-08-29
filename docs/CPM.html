@@ -430,6 +430,154 @@ $(document).ready(function () {
 </tbody>
 </table>
 </div>
+<div id="ejemplo-de-un-problema-pert" class="section level2">
+<h2>Ejemplo de un problema PERT</h2>
+<p>En el caso anterior sabíamos exactamente la duración de las tareas a ejecutarse. Eso nos permitía saber la duración exacta del proyecto. Sin embargo, cuando esto no es posible, deberán estimarse al menos tres duraciones probables, en tres diferentes escenarios:</p>
+<ul>
+<li><strong>Tiempo optimista</strong> (denotado como a): el tiempo mínimo. Todo tiene que salir perfectamente para lograr este tiempo.</li>
+<li><strong>Tiempo más probable</strong> (denotado como m): el tiempo más factible. El tiempo requerido bajo circunstancias normales.</li>
+<li><strong>Tiempo pesimista</strong> (denotado como b): el tiempo máximo. Una versión de la Ley de Murphy es que si algo puede salir mal, saldrá mal. El tiempo pesimista es el tiempo requerido cuando la Ley de Murphy entra en vigor.</li>
+</ul>
+<p>Esto causa que no podamos decir con exactitud la duración, si no solo dar posibles duraciones. Es decir, podremos decir la probabilidad de terminar el proyecto en un tiempo dado, nada más. Consideremos el proyecto anterior con algunas modificaciones que le traen incertidumbre:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">ACTIVIDAD</th>
+<th>DESCRIPCIÓN</th>
+<th align="center">PREDECESORES</th>
+<th align="center">a</th>
+<th align="center">m</th>
+<th align="center">b</th>
+<th align="center">Tiempo esperado</th>
+<th align="center">Varianza</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">A</td>
+<td>Seleccionar sitio de oficinas</td>
+<td align="center">-</td>
+<td align="center">1</td>
+<td align="center">3</td>
+<td align="center">5</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">B</td>
+<td>Crear plan organizacional y financiero</td>
+<td align="center">-</td>
+<td align="center">3</td>
+<td align="center">4.5</td>
+<td align="center">9</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">C</td>
+<td>Determinar requerimientos de personal</td>
+<td align="center">B</td>
+<td align="center">2</td>
+<td align="center">3</td>
+<td align="center">4</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">D</td>
+<td>Diseñar la instalación</td>
+<td align="center">A, C</td>
+<td align="center">2</td>
+<td align="center">4</td>
+<td align="center">6</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">E</td>
+<td>Construir el interior</td>
+<td align="center">D</td>
+<td align="center">4</td>
+<td align="center">7</td>
+<td align="center">16</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">F</td>
+<td>Seleccionar al personal que se va a transferir</td>
+<td align="center">C</td>
+<td align="center">1</td>
+<td align="center">1.5</td>
+<td align="center">5</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">G</td>
+<td>Contratar nuevos empleados</td>
+<td align="center">F</td>
+<td align="center">2.5</td>
+<td align="center">3.5</td>
+<td align="center">7.5</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">H</td>
+<td>Trasladar registros, personal clave, etc</td>
+<td align="center">F</td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">3</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">I</td>
+<td>Hacer arreglos financieros con otras instituciones</td>
+<td align="center">B</td>
+<td align="center">4</td>
+<td align="center">5</td>
+<td align="center">6</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">J</td>
+<td>Asegurar la capacitación</td>
+<td align="center">F</td>
+<td align="center">1.5</td>
+<td align="center">3</td>
+<td align="center">4.5</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">K</td>
+<td>Capacitar nuevo personal</td>
+<td align="center">G, J</td>
+<td align="center">1</td>
+<td align="center">3</td>
+<td align="center">5</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+<p>La red se construye exactamente igual a como sería una del tipo CPM, con la salvedad de que no determinaremos la duración de la misma manera. Deben calcularse los tiempos esperados, lo cual se hace con la siguiente fórmula:</p>
+<p><span class="math display">\[
+tiempo\ esperado= \frac{a+4m+b}{6}
+\]</span> Los tiempos esperados serán los valores con los que se calculará la duración del proyecto. Cuando hayamos obtenido la duración esperada y las actividades críticas, podemos ya calcular la varianza de las tareas críticas solamente, cuya fórmula es:</p>
+<p><span class="math display">\[
+\sigma^2= \frac{(b-a)^2}{36}
+\]</span> Las varianzas se suman y al resultado le calculamos la raíz cuadrada. Eso será la desviación estándar. La necesitaremos para el cálculo de la probabilidad:</p>
+<p><span class="math display">\[
+Z= \frac{T-\mu}{\sigma}
+\]</span></p>
+<pre class="r"><code>pnorm(22, mean = 20, sd=2.357)</code></pre>
+<pre><code>## [1] 0.8019303</code></pre>
+</div>
 
 
 

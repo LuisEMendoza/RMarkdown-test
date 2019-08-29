@@ -43,6 +43,44 @@ H | Trasladar registros, personal clave, etc |F  | 2|
 I | Hacer arreglos financieros con otras instituciones |B  |  5|
 J | Capacitar nuevo personal |H, E, G  |3  |
 
+## Ejemplo de un problema PERT
+En el caso anterior sabíamos exactamente la duración de las tareas a ejecutarse. Eso nos permitía saber la duración exacta del proyecto. Sin embargo, cuando esto no es posible, deberán estimarse al menos tres duraciones probables, en tres diferentes escenarios:
 
+- __Tiempo optimista__ (denotado como a): el tiempo mínimo. Todo tiene que salir perfectamente para lograr este tiempo.
+- __Tiempo más probable__ (denotado como m): el tiempo más factible. El tiempo requerido bajo circunstancias normales.
+- __Tiempo pesimista__ (denotado como b): el tiempo máximo. Una versión de la Ley de Murphy es que si algo puede salir mal, saldrá mal. El tiempo pesimista es el tiempo requerido cuando la Ley de Murphy entra en vigor.
 
+Esto causa que no podamos decir con exactitud la duración, si no solo dar posibles duraciones. Es decir, podremos decir la probabilidad de terminar el proyecto en un tiempo dado, nada más. Consideremos el proyecto anterior con algunas modificaciones que le traen incertidumbre:
 
+ACTIVIDAD | DESCRIPCIÓN | PREDECESORES | a|m|b | Tiempo esperado|Varianza
+:---:| --- | :---: | :---: | :---:|:---:|:---:|:---:
+A | Seleccionar sitio de oficinas | - | 1 |3|5
+B | Crear plan organizacional y financiero | -  |3|4.5|9
+C | Determinar requerimientos de personal | B |2| 3 |4
+D | Diseñar la instalación |  A, C |2|4|6
+E | Construir el interior | D |4|7|16
+F | Seleccionar al personal que se va a transferir | C  | 1|1.5|5
+G | Contratar nuevos empleados |F  |2.5|3.5|7.5
+H | Trasladar registros, personal clave, etc |F  |1|2|3
+I | Hacer arreglos financieros con otras instituciones |B | 4| 5|6
+J | Asegurar la capacitación | F |1.5|3|4.5
+K | Capacitar nuevo personal | G, J  |1|3|5 |
+
+La red se construye exactamente igual a como sería una del tipo CPM, con la salvedad de que no determinaremos la duración de la misma manera. Deben calcularse los tiempos esperados, lo cual se hace con la siguiente fórmula:
+
+$$
+tiempo\ esperado= \frac{a+4m+b}{6}
+$$
+Los tiempos esperados serán los valores con los que se calculará la duración del proyecto. Cuando hayamos obtenido la duración esperada y las actividades críticas, podemos ya calcular la varianza de las tareas críticas solamente, cuya fórmula es:
+
+$$
+\sigma^2= \frac{(b-a)^2}{36}
+$$
+Las varianzas se suman y al resultado le calculamos la raíz cuadrada. Eso será la desviación estándar. La necesitaremos para el cálculo de la probabilidad:
+
+$$
+Z= \frac{T-\mu}{\sigma}
+$$
+```{r}
+pnorm(22, mean = 20, sd=2.357)
+```
