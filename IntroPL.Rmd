@@ -2,7 +2,7 @@
 title: "Introducción a la Programación Lineal"
 ---
 
-La Programación Lineal puede considerarse como una constante disputa entre actividades por recursos generalmente limitados, con el objetivo de obtener el mejor rendimiento. Este último podemos entenderlo de dos maneras:
+La Programación Lineal puede considerarse como una constante disputa entre actividades por recursos generalmente limitados, con el objetivo de obtener el mejor rendimiento. Este último podemos entenderlo de dos maneras:  
 
 - __Maximización__: cuando se desea obtener la mayor utilidad o ganancia posible.
 - __Minimización__: cuando se desea el mínimo de egresos posible en una organización.
