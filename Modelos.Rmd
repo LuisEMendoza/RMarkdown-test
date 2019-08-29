@@ -15,7 +15,7 @@ Recurso | Pupitres | Sillas | Mesas | Disponibilidad
 Madera  |5m|3m|2m|150 metros
 Tubo    |3m|4m|3m|120 metros
 Horas-Hombre|4h|5h|1h|200 horas
-Utilidad/unidad|$$5,000$|$$6,000$|$$3,000$
+Utilidad/unidad|$\$5,000$|$\$6,000$|$\$3,000$
 Variables|$x_1$|$x_2$|$x_3$
 
 Cada producto es una variable. Así que cada una representa la cantidad de unidades a producir por semana.
