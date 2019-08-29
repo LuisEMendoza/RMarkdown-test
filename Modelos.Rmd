@@ -4,7 +4,7 @@ title: "Planteamiento de modelos de programación lineal"
 
 Veamos otro ejemplo de problema del tipo _producción_. Sigue siendo un caso en el cual se tiene que encontrar la combinación de productos elaborados con recursos limitados que aumentan las utilidades para nuestra organización.
 
-## Ejercicio 1
+## Problema de mezcla de productos
 Una compañía mueblera fabrica pupitres, sillas y mesas, para las cuales ha establecido que aportan una contribución a las utilidades de $\$5,000$, $\$6,000$ y $\$3,000$ por unidad, respectivamente. Para la producción de dichos artículos se cuenta con una disponibilidad semanal de 150 metros de madera, 120 metros de tubo y 200 horas-hombre de trabajo. Plantee el modelo matemático de programación lineal si sabe que para producir un pupitre necesita 5 metros de madera, 3 de tubo y 4 horas; para la silla requiere 3 metros de madera, 4 de tubo y 5 horas; y para la mesa se utilizan 2 metros de madera, 3 de tubo y una hora de trabajo.
 
 ### Solución
@@ -69,4 +69,22 @@ x_3 \geq 10 \\
 13x_2-3x_3=0\\
 x_1,x_2,x_3 \geq 0
 $$
+## Problema de la mezcla dietética
+Usted está cargo de una guardería, y por lo tanto, tiene que diseñar los platillos para los niños. Su nutricionista le ha informado que cada niño debe recibir diariamente un mínimo de 25 miligramos de calcio, 15mg de hierro y 24mg de vitaminas, pero no más de 30mg. Los niños son alimentados con leche cuyo valor es de $\$10$ por litro, huevos que cuestan $\$1.50$ cada uno y compotas con valor de $\$6$ por frasco. Contiene el modelo de programación lineal si sabe que un litro de leche contiene 2mg de calcio, 3mg de hierro y 1mg de vitaminas; un huevo contiene 4mg de calcio, 5mg de hierro y 3mg de vitaminas; y cada frasco de compota aporta 6mg de calcio, 1mg de hierro y 2mg de vitaminas.
+
+## Problema de mezcla de componentes
+Una siderúrgica dispone de un horno, el cual debe ser cargado con dos toneladas de materiales para elaborar una aleación especial. Dicha aleación debe contener mínimo el 15% de cobre pero no más del 20% y máximo 17% de fósforo. Para cargar el horno se cuenta con minerales de hierro, tungsteno, níquel y carbono. Mediante un estudio químico se estableció que el hierro contiene 7% de cobre y 9% de fósforo, el tungsteno contiene 11% de cobre y 3% de fósforo, el níquel 19% de cobre y el 8% de fósforo; mientras que el carbono contiene 4% de cobre y 17% de fósforo. Plantee el modelo si sabe que el material cuesta $\$1,000$ por kilogramo de hierro, $\$2000$ la libra de tungsteno, $\$3000$ el níquel por kilogramo y $\$1700$ la libra de carbono.
+
+## Problema de distribución
+Una cervecera produce en tres plantas ubicadas en Zacatecas, Torreón y Guadalajara, las cuales tienen la capacidad de producir 5,000, 3,500 y 6,000 cajas por semana, respectivamente. La cerveza se vende a través de cuatro distribuidores que se encuentran ubicados en Guanajuato, Monterrey, Chihuahua y Ciudad de México, los cuales han determinado su demanda semanal en 2,000, 3,200, 1,700 y 1,800 cajas. Plantee el modelo si sabe que llevar una caja de Zacatecas a Guanajuato cuesta $\$0.90$, a Monterrey $\$7.50$, a Chihuahua $\$9.00$ y a CDMX $\$6.70$; el costo de transporte de Torreón a Guanajuato es de $\$7.80$, a Monterrey es de $\$4$, a Chihuahua es de $\$6.50$ y a CDMX es de $\$8.50$; mientras que transportar cada caja desde Guadalajara hacia Guanajuato cuesta $\$1.70$, a Monterrey $\$14.70$, a Chihuahua $\$15.00$ y a CDMX $\$6.50$.
+
+## Problema de asignación
+El ayuntamiento de cierta ciudad está interesada en generar la manera más barata de asignar 4 proyectos a 4 contratistas diferentes. Se debe asignar de manera garantizada un proyecto a cada contratista, así que construya el modelo que permita hacerlo al costo más bajo. Los presupuestos resumidos por contratista se muestran a continuación:
+
+Proyecto|Contratista 1|Contratista 2|Contratista 3|Contratista 4
+:---|:---:|:---:|:---:|:---:
+Parque|50|60|48|55
+Edificio|35|30|33|39
+Puente|40|43|42|41
+Túnel|27|30|25|29
 
