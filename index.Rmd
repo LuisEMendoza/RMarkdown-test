@@ -2,5 +2,13 @@
 title: "Apuntes"
 output: html_document
 ---
+### Docente:
+M. en E. Luis Enrique Mendoza Ruiz
+
+### Correo institucional:
+luis_mendozaru@my.uvm.edu.mx
+
+### Página en GitHub:
+https://github.com/LuisEMendoza
 
 Esta página está aún en construcción.
