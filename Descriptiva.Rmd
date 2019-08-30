@@ -36,7 +36,7 @@ hist(temp[1:36,])
 
 Y para terminar, una gráfica que posteriormente se verá cómo interpretarse y construirse es la __gráfica de caja__, la cual se muestra a continuación:
 
-```{r}
+```{r echo=FALSE}
 boxplot(temp[1:36,])
 ```
 
