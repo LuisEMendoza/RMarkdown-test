@@ -1,0 +1,6 @@
+---
+title: "Acerca de estos apuntes"
+---
+
+Esta página ha sido realizada en principio para soportar el contenido que se aborda en clase y abarca todas las asignaturas del docente. Sin embargo, puede utilizarse como material de referencia y de consulta, tanto en contenidos de la materia como en los comandos utilizados por el programa informático, donde aplica. 
+El _software_ utilizado en clases, RStudio, brinda la suficiente flexibilidad para poder crear este tipo de documentos a la vez que permite resolver los ejercicios de muchas de las materias. De hecho, esta página fue generada desde el propio RStudio. La sección [Git y GitHub en RStudio](docs/GitHub-en-RStudio.html) muestra cómo es el proceso para tener una página idéntica a esta en funcionalidad. Si se desea, incluso se puede acceder al código fuente, a través de GitHub en el siguiente [repositorio](https://github.com/LuisEMendoza/RMarkdown-test).
