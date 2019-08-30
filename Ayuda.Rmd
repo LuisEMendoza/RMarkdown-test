@@ -3,4 +3,22 @@ title: "Acerca de estos apuntes"
 ---
 
 Esta página ha sido realizada en principio para soportar el contenido que se aborda en clase y abarca todas las asignaturas del docente. Sin embargo, puede utilizarse como material de referencia y de consulta, tanto en contenidos de la materia como en los comandos utilizados por el programa informático, donde aplica. 
+
 El _software_ utilizado en clases, RStudio, brinda la suficiente flexibilidad para poder crear este tipo de documentos a la vez que permite resolver los ejercicios de muchas de las materias. De hecho, esta página fue generada desde el propio RStudio. La sección [Git y GitHub en RStudio](GitHub-en-RStudio.html) muestra cómo es el proceso para tener una página idéntica a esta en funcionalidad. Si se desea, incluso se puede acceder al código fuente, a través de GitHub en el siguiente [repositorio](https://github.com/LuisEMendoza/RMarkdown-test).
+
+La página se divide en varias secciones que siguen en fase de construcción, pero que ya son utilizables en ciertos aspectos. La primera sección "Inicio", es donde se encuentran algunos datos relevantes del docente (se encuentra incompleta, por tiempo indefinido, ya que será la última sección en ser completada). La segunda sección es esta, donde se aclara el objetivo de la página y se dan algunas recomendaciones sobre su uso. La tercera sección, como ya se mencionó arriba, muestra cómo poder construir un sitio como este utilizando el propio RStudio. La última sección (por el momento), es la más importante, pues en ella están los contenidos de las asignaturas. Es importante mencionar que mucho de ese contenido se extrajo de algunos libros de texto y otra parte es original. También cabe mencionar que puede abordarse con software estadístico o matemático, por lo que en muchas ocasiones se muestra la teoría, las fórmulas y también el código utilizado. 
+
+### Nota sobre el código usado.
+Para poder distinguir qué parte del documento es código y qué parte son resultados del mismo, la diferencia de apariencia es bastante notoria. El código tal como se captura en RStudio, se muestra así:
+
+```{r}
+a <- read.table("datasets/001-challenger.txt")
+```
+
+Mientras que la salida del programa siempre tendrá un par de almohadillas (#) al inicio de línea:
+
+```{r echo=FALSE}
+head(a)
+```
+
+Para finalizar esta sección, debo decir que la retroalimentación de estudiantes, profesores y usuarios en general, es agradecida e incluso deseada. El ideal es ir mejorando la página con todas las aportaciones posibles.
