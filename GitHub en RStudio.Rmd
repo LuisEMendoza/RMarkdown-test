@@ -196,9 +196,11 @@ Es momento de empujar los cambios:
 git push -u origin NombreDeRama
 ```
 
-2. Crea una petición pull en tu sitio de GitHub, para ello, ve al repositorio y verás en la pantalla principal la rama que se acaba de empujar y a su lado, un botón verde con la leyenda _Compare & Pull Request_. Presionamos dicho botón.
+2. Creamos una petición pull en el sitio de GitHub, para ello, vamos al repositorio y veremos en la pantalla principal la rama que se acaba de empujar y a su lado, un botón verde con la leyenda _Compare & Pull Request_. Presionamos dicho botón.
 ![new request](images/016-github.png)
 
+
+Si este aviso no aparece (usualmente ocurre cuando estamos editando muy rápido nuestro repositorio), tendremos que ir justo debajo de donde debió aparecer el aviso. Damos clic en el botón que dice "Branch:master" y seleccionamos el nombre de nuestra rama en el desplegable. Enseguida damos clic en el botón "New pull request".
 
 Aparece una pantalla en la que debemos llenar con datos de la petición. Debemos asegurarnos de que en la parte superior sí esté seleccionada la base como master y compare como el nombre de nuestra rama. Presionamos el botón _Create Pull Request_.
 
